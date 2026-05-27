@@ -7,20 +7,14 @@ export const siteConfig = {
   bandName: "They Went Ghost",
   tagline: "Original music from the darker edge of modern rock.",
 
-  // Add the real logo path after placing the file in public/brand.
-  // Example: "/brand/they-went-ghost-logo.png"
-  logo: "",
+  logo: "/brand/they-went-ghost-logo.png",
 
-  // Add final intro files after placing them in public/media.
-  // Example: "/media/intro.mp4"
+  // Intro video is still in production.
   introVideo: "",
 
-  // Example: "/media/intro-poster.jpg"
-  introPoster: "",
+  introPoster: "/media/twg-logo-black-back.jpeg",
 
-  // Add later when ready.
-  // Example: "booking@theywentghost.com"
-  bookingEmail: "",
+  bookingEmail: "theywentghost@gmail.com",
 
   bookingDescription:
     "For original music opportunities, booking, media, and select cover-gig inquiries, contact They Went Ghost directly.",
@@ -40,14 +34,30 @@ export const navItems: SiteLink[] = [
 ];
 
 export const socialLinks: SiteLink[] = [
-  // Replace the empty href values with real URLs when ready.
-  // Example: { label: "Instagram", href: "https://instagram.com/theywentghost" }
-  { label: "Instagram", href: "" },
-  { label: "TikTok", href: "" },
-  { label: "YouTube", href: "" },
-  { label: "Spotify", href: "" },
-  { label: "Apple Music", href: "" },
-  { label: "YouTube Music", href: "" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/they_went_ghost/",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@theywentghost?is_from_webapp=1&sender_device=pc",
+  },
+  {
+    label: "YouTube",
+    href: "https://youtube.com/@theywentghost?si=epJoT16oA4jT5nS6",
+  },
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/artist/7dKF39VNBeIYhdhV6HqFU3?si=D-2X0Mt8SCeMtxyf59O-iA",
+  },
+  {
+    label: "Apple Music",
+    href: "https://music.apple.com/us/artist/they-went-ghost/666238668",
+  },
+  {
+    label: "YouTube Music",
+    href: "https://music.youtube.com/channel/UCFN9FuTe90z2sltRNLodl0A",
+  },
 ];
 
 export const activeSocialLinks = socialLinks.filter((link) => {

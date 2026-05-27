@@ -23,34 +23,54 @@ export type MusicRelease = {
 
 export const featuredRelease: MusicRelease = {
   slug: "they-went-ghost-self-titled-ep",
-  title: "Self-Titled EP",
+  title: "They Went Ghost",
   type: "ep",
-  releaseDate: "Release date coming soon",
-
-  // Add the real cover after placing it in public/releases.
-  // Example: "/releases/self-titled-ep-cover.jpg"
-  coverImage: "",
+  releaseDate: "January 20, 2026",
+  coverImage: "/releases/twg-ep-cover-art.jpg",
 
   shortDescription:
-    "The newest They Went Ghost EP is self-titled. This release section will connect fans to streaming platforms, track details, and a purchasable digital download.",
+    "The self-titled EP from They Went Ghost, released January 20, 2026. Four tracks built around the band’s darker, cinematic original sound.",
 
-  // Replace these with the real track names when ready.
   tracks: [
-    { number: "01", title: "Track One" },
-    { number: "02", title: "Track Two" },
-    { number: "03", title: "Track Three" },
-    { number: "04", title: "Track Four" },
+    {
+      number: "01",
+      title:
+        "Better Off (feat. Araceli Blount, The Badmouth, Eizlo & Sonny J. Maxon)",
+    },
+    {
+      number: "02",
+      title: "A Breath Away From Drowning (feat. The Badmouth & Eizlo)",
+    },
+    {
+      number: "03",
+      title: "Lush",
+    },
+    {
+      number: "04",
+      title: "Smitten (feat. Araceli Blount & The Badmouth)",
+    },
   ],
 
-  // Add real streaming URLs when ready.
   streamingLinks: [
-    { label: "Spotify", href: "" },
-    { label: "Apple Music", href: "" },
-    { label: "YouTube Music", href: "" },
-    { label: "YouTube", href: "" },
+    {
+      label: "Spotify",
+      href: "https://open.spotify.com/artist/7dKF39VNBeIYhdhV6HqFU3?si=D-2X0Mt8SCeMtxyf59O-iA",
+    },
+    {
+      label: "Apple Music",
+      href: "https://music.apple.com/us/artist/they-went-ghost/666238668",
+    },
+    {
+      label: "YouTube Music",
+      href: "https://music.youtube.com/channel/UCFN9FuTe90z2sltRNLodl0A",
+    },
+    {
+      label: "YouTube",
+      href: "https://youtube.com/@theywentghost?si=epJoT16oA4jT5nS6",
+    },
   ],
 
-  // Add digital download purchase URL when ready.
+  // Add the digital download purchase URL later.
   purchaseLink: {
     label: "Buy Digital Download",
     href: "",
