@@ -1,4 +1,7 @@
+import AssetFrame from "@/components/AssetFrame";
 import TwgButton from "@/components/TwgButton";
+import { aboutContent } from "@/data/about";
+import { featuredRelease } from "@/data/releases";
 import { siteConfig } from "@/data/site";
 
 export default function HeroSection() {
@@ -17,7 +20,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-4 py-20 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-12 px-4 py-20 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="max-w-4xl">
           <p className="mb-5 text-xs font-bold uppercase tracking-[0.45em] text-[#8a6f4d]">
             Original Music • Dark Cinematic Rock
@@ -31,37 +34,68 @@ export default function HeroSection() {
             {siteConfig.tagline}
           </p>
 
+          <div className="mt-8 max-w-xl border border-stone-200/10 bg-black/30 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.32em] text-stone-600">
+              Featured Release
+            </p>
+
+            <p className="font-display mt-3 text-4xl uppercase tracking-tighter text-stone-100">
+              {featuredRelease.title}
+            </p>
+
+            <p className="mt-2 text-sm uppercase tracking-[0.22em] text-[#8a6f4d]">
+              {featuredRelease.releaseDate}
+            </p>
+          </div>
+
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <TwgButton href="/music" variant="primary">
-              Listen to the EP
+            <TwgButton href="/listen" variant="primary">
+              Listen Now
             </TwgButton>
 
-            <TwgButton href="/videos">Watch Videos</TwgButton>
+            <TwgButton href="/videos">Watch Video</TwgButton>
+
+            <TwgButton href="/music">View EP</TwgButton>
           </div>
         </div>
 
-        <div className="twg-panel twg-panel-cut hidden min-h-[130] p-5 lg:block">
-          <div className="relative h-full overflow-hidden border border-stone-200/10 bg-black">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,184,155,0.16),transparent_34%),linear-gradient(145deg,rgba(0,0,0,0.2),rgba(0,0,0,0.92))]" />
-            <div className="absolute inset-0 opacity-[0.12] twg-scratch" />
+        <div className="hidden lg:block">
+          <div className="grid gap-5">
+            <div className="grid grid-cols-[0.9fr_1.1fr] gap-5">
+              <AssetFrame
+                src={featuredRelease.coverImage}
+                alt={`${featuredRelease.title} cover art`}
+                label="EP Cover"
+                aspect="square"
+                className="rotate-[-1.5deg]"
+              />
 
-            <div className="absolute left-6 top-6 border border-stone-200/15 bg-black/60 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.28em] text-stone-400">
-              Album Promo
+              <AssetFrame
+                src={aboutContent.bandPhoto}
+                alt="They Went Ghost band promo photo"
+                label="Band Photo"
+                aspect="poster"
+                className="translate-y-8 rotate-[1.5deg]"
+              />
             </div>
 
-            <div className="absolute bottom-8 left-6 right-6">
-              <p className="font-display text-5xl uppercase leading-none tracking-tighter text-stone-100">
-                Intro Video
+            <div className="twg-panel twg-panel-cut p-5">
+              <p className="text-xs font-bold uppercase tracking-[0.32em] text-[#8a6f4d]">
+                Self-Titled EP
               </p>
 
-              <p className="mt-3 max-w-sm text-sm leading-6 text-stone-400">
-                The final landing video and poster frame will drop into the
-                public media folder when ready.
-              </p>
+              <div className="mt-4 grid gap-2 text-sm text-stone-300">
+                {featuredRelease.tracks.map((track) => (
+                  <div
+                    key={`${track.number}-${track.title}`}
+                    className="flex gap-3 border-b border-stone-200/10 pb-2"
+                  >
+                    <span className="text-stone-600">{track.number}</span>
+                    <span>{track.title}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            <div className="absolute `-right-15` top-20 h-24 w-72 rotate-12 border border-stone-200/10 bg-stone-100/5" />
-            <div className="absolute bottom-24 `-right-22.5` h-16 w-80 -rotate-12 border border-[#8a6f4d]/30 bg-[#8a6f4d]/10" />
           </div>
         </div>
       </div>

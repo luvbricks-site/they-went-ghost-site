@@ -1,5 +1,6 @@
 import SectionShell from "@/components/sections/SectionShell";
 import { merchCategories } from "@/data/merch";
+import Link from "next/link";
 
 export default function MerchSection() {
   return (
@@ -13,12 +14,21 @@ export default function MerchSection() {
           />
         ))}
       </div>
-        <a
+
+      <div className="mt-8 twg-panel twg-panel-cut p-6">
+        <p className="text-stone-300">
+          Official merch will focus on apparel and music first. Print-on-demand
+          products and direct checkout will be added after the core site is fully
+          polished.
+        </p>
+
+        <Link
           href="/merch"
-          className="mt-8 inline-flex border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+          className="twg-glitch-hover mt-6 inline-flex border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
         >
           View Merch Page
-      </a>
+        </Link>
+      </div>
     </SectionShell>
   );
 }
@@ -31,7 +41,7 @@ function MerchCard({
   description: string;
 }) {
   return (
-    <div className="min-h-56 border border-stone-200/15 bg-stone-950/70 p-6 transition hover:border-stone-100/50">
+    <div className="twg-panel twg-panel-cut min-h-56 p-6 transition hover:border-stone-100/50">
       <h3 className="font-display text-4xl uppercase tracking-tighter">
         {title}
       </h3>
