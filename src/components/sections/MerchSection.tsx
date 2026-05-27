@@ -1,18 +1,17 @@
 import SectionShell from "@/components/sections/SectionShell";
+import { merchCategories } from "@/data/merch";
 
 export default function MerchSection() {
   return (
     <SectionShell id="merch" eyebrow="Merch" title="Apparel & Music">
       <div className="grid gap-4 md:grid-cols-2">
-        <MerchCard
-          title="Apparel"
-          description="Shirts, hoodies, hats, tanks, mugs, and more."
-        />
-
-        <MerchCard
-          title="Music"
-          description="Digital downloads and album-related products."
-        />
+        {merchCategories.map((category) => (
+          <MerchCard
+            key={category.slug}
+            title={category.title}
+            description={category.description}
+          />
+        ))}
       </div>
     </SectionShell>
   );

@@ -1,10 +1,30 @@
 import SectionShell from "@/components/sections/SectionShell";
-import { socialLinks } from "@/data/site";
+import { siteConfig, socialLinks } from "@/data/site";
 
 export default function ContactSection() {
   return (
     <SectionShell id="contact" eyebrow="Contact" title="Booking & Links">
-      <div className="flex flex-wrap gap-3">
+      <div className="max-w-3xl">
+        <p className="text-stone-300">
+          For original music opportunities, booking, media, or select cover-gig
+          inquiries, contact They Went Ghost directly.
+        </p>
+
+        {siteConfig.bookingEmail ? (
+          <a
+            href={`mailto:${siteConfig.bookingEmail}`}
+            className="mt-6 inline-flex border border-stone-100 bg-stone-100 px-5 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
+          >
+            Email Booking
+          </a>
+        ) : (
+          <p className="mt-6 text-sm text-stone-500">
+            Booking email placeholder will be added later.
+          </p>
+        )}
+      </div>
+
+      <div className="mt-8 flex flex-wrap gap-3">
         {socialLinks.map((link) => (
           <a
             key={link.label}

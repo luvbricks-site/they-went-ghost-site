@@ -4,6 +4,7 @@ export const siteConfig = {
   introVideo: "/media/intro.mp4",
   introPoster: "/media/intro-poster.jpg",
   logo: "/brand/they-went-ghost-logo.png",
+  bookingEmail: "",
 };
 
 export const navItems = [
