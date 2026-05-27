@@ -71,6 +71,12 @@ export default function MusicSection() {
                 {featuredRelease.purchaseLink.label}
               </a>
             )}
+              <a
+                href="/music"
+                className="border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+              >
+                View Music Page
+            </a>
           </div>
         </div>
       </div>

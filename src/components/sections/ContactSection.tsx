@@ -35,6 +35,12 @@ export default function ContactSection() {
           </a>
         ))}
       </div>
+        <a
+          href="/contact"
+          className="mt-8 inline-flex border border-stone-100 bg-stone-100 px-5 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
+        >
+          Contact / Booking
+      </a>
     </SectionShell>
   );
 }

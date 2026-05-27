@@ -1,3 +1,4 @@
+import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import type { ReactNode } from "react";
 
@@ -37,6 +38,8 @@ export default function SubPageLayout({
       <section className="px-4 py-16">
         <div className="mx-auto max-w-7xl">{children}</div>
       </section>
+
+      <SiteFooter />
     </main>
   );
 }

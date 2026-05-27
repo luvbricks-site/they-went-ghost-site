@@ -1,3 +1,4 @@
+import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -18,6 +19,7 @@ export default function HomePage() {
       <MerchSection />
       <AboutSection />
       <ContactSection />
+      <SiteFooter />
     </main>
   );
 }

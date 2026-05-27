@@ -37,6 +37,12 @@ export default function VideoSection() {
           <p className="mt-2 text-stone-400">{featuredVideo.description}</p>
         </div>
       )}
+        <a
+          href="/videos"
+          className="mt-8 inline-flex border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+        >
+          View Video Page
+      </a>
     </SectionShell>
   );
 }
