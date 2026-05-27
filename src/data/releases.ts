@@ -33,21 +33,27 @@ export const featuredRelease: MusicRelease = {
 
   shortDescription:
     "The newest They Went Ghost EP is self-titled. This release section will connect fans to streaming platforms, track details, and a purchasable digital download.",
+
+  // Replace these with the real track names when ready.
   tracks: [
-    { number: "01", title: "Better Off (feat. Araceli Blount, The Badmouth, Eizlo & Sonny J. Maxon)" },
-    { number: "02", title: "A Breathe Away From Drowning (feat. The Badmouth & Eizlo)" },
-    { number: "03", title: "Lush" },
-    { number: "04", title: "Smitten (feat. Araceli Blount & The Badmouth)" },
+    { number: "01", title: "Track One" },
+    { number: "02", title: "Track Two" },
+    { number: "03", title: "Track Three" },
+    { number: "04", title: "Track Four" },
   ],
+
+  // Add real streaming URLs when ready.
   streamingLinks: [
-    { label: "Spotify", href: "#" },
-    { label: "Apple Music", href: "#" },
-    { label: "YouTube Music", href: "#" },
-    { label: "YouTube", href: "#" },
+    { label: "Spotify", href: "" },
+    { label: "Apple Music", href: "" },
+    { label: "YouTube Music", href: "" },
+    { label: "YouTube", href: "" },
   ],
+
+  // Add digital download purchase URL when ready.
   purchaseLink: {
     label: "Buy Digital Download",
-    href: "#",
+    href: "",
   },
 };
 

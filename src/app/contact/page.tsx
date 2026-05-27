@@ -1,23 +1,20 @@
 import SubPageLayout from "@/components/SubPageLayout";
-import { siteConfig, socialLinks } from "@/data/site";
+import { activeSocialLinks, siteConfig } from "@/data/site";
 
 export default function ContactPage() {
   return (
     <SubPageLayout
       eyebrow="Contact"
       title="Booking & Links"
-      description="Contact They Went Ghost for original music opportunities, booking, media, and select cover-gig inquiries."
+      description={siteConfig.bookingDescription}
     >
       <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
-        <div className="border border-stone-200/15 bg-stone-950/70 p-6">
+        <div className="twg-panel twg-panel-cut p-6">
           <h2 className="font-display text-4xl uppercase tracking-tighter">
             Booking
           </h2>
 
-          <p className="mt-4 text-stone-300">
-            For original shows, media opportunities, collaborations, and select
-            cover-gig inquiries, contact They Went Ghost directly.
-          </p>
+          <p className="mt-4 text-stone-300">{siteConfig.coverGigNote}</p>
 
           {siteConfig.bookingEmail ? (
             <a
@@ -28,27 +25,33 @@ export default function ContactPage() {
             </a>
           ) : (
             <p className="mt-6 text-sm text-stone-500">
-              Booking email placeholder will be added later.
+              Booking email will be added later.
             </p>
           )}
         </div>
 
-        <div className="border border-stone-200/15 bg-stone-950/70 p-6">
+        <div className="twg-panel twg-panel-cut p-6">
           <h2 className="font-display text-4xl uppercase tracking-tighter">
             Socials
           </h2>
 
-          <div className="mt-6 grid gap-3">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="border border-stone-200/15 px-4 py-3 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+          {activeSocialLinks.length > 0 ? (
+            <div className="mt-6 grid gap-3">
+              {activeSocialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="border border-stone-200/15 px-4 py-3 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-6 text-sm text-stone-500">
+              Social links will be added soon.
+            </p>
+          )}
         </div>
       </div>
     </SubPageLayout>

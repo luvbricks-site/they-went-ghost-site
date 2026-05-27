@@ -1,7 +1,7 @@
 import BrandMark from "@/components/BrandMark";
 import Link from "next/link";
 import ReplayIntroButton from "@/components/ReplayIntroButton";
-import { navItems, socialLinks } from "@/data/site";
+import { activeSocialLinks, navItems } from "@/data/site";
 
 export default function SiteFooter() {
   return (
@@ -11,8 +11,8 @@ export default function SiteFooter() {
           <BrandMark size="lg" />
 
           <p className="mt-5 max-w-md text-sm leading-6 text-stone-500">
-            Original music from the darker edge of modern rock. Serious, cinematic,
-            and built around the world of They Went Ghost.
+            Original music from the darker edge of modern rock. Serious,
+            cinematic, and built around the world of They Went Ghost.
           </p>
 
           <div className="mt-6">
@@ -43,17 +43,21 @@ export default function SiteFooter() {
             Follow
           </p>
 
-          <div className="flex flex-wrap gap-2">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="border border-stone-200/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-500 transition hover:border-stone-100 hover:text-stone-100"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+          {activeSocialLinks.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {activeSocialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="border border-stone-200/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-500 transition hover:border-stone-100 hover:text-stone-100"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-stone-600">Social links coming soon.</p>
+          )}
         </div>
       </div>
 
