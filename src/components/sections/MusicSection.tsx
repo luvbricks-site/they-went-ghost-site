@@ -1,3 +1,4 @@
+import AssetFrame from "@/components/AssetFrame";
 import SectionShell from "@/components/sections/SectionShell";
 import { featuredRelease } from "@/data/releases";
 
@@ -5,28 +6,11 @@ export default function MusicSection() {
   return (
     <SectionShell id="music" eyebrow="Latest Release" title={featuredRelease.title}>
       <div className="grid gap-8 lg:grid-cols-[320px_1fr] lg:items-start">
-        <div className="aspect-square border border-stone-200/15 bg-stone-900/80 p-6 shadow-2xl">
-          <div className="grid h-full place-items-center border border-stone-200/10 bg-black/70 text-center">
-            {featuredRelease.coverImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={featuredRelease.coverImage}
-                alt={`${featuredRelease.title} cover art`}
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <div>
-                <p className="font-display text-4xl uppercase tracking-tighter">
-                  Album Art
-                </p>
-
-                <p className="mt-3 text-xs uppercase tracking-[0.25em] text-stone-500">
-                  Placeholder
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
+        <AssetFrame
+          src={featuredRelease.coverImage}
+          alt={`${featuredRelease.title} cover art`}
+          label="Album Art"
+        />
 
         <div>
           <p className="text-stone-300">{featuredRelease.shortDescription}</p>
@@ -71,11 +55,12 @@ export default function MusicSection() {
                 {featuredRelease.purchaseLink.label}
               </a>
             )}
-              <a
-                href="/music"
-                className="border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
-              >
-                View Music Page
+
+            <a
+              href="/music"
+              className="border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+            >
+              View Music Page
             </a>
           </div>
         </div>

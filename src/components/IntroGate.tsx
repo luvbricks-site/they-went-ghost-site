@@ -47,7 +47,8 @@ export default function IntroGate({ children }: { children: ReactNode }) {
   const [fadingOut, setFadingOut] = useState(false);
   const [muted, setMuted] = useState(true);
 
-  const showIntro = !hasSeenIntro && !dismissed;
+  const hasIntroVideo = Boolean(siteConfig.introVideo);
+  const showIntro = hasIntroVideo && !hasSeenIntro && !dismissed;
 
   function markIntroSeen() {
     if (typeof window !== "undefined") {
@@ -96,7 +97,7 @@ export default function IntroGate({ children }: { children: ReactNode }) {
             ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover"
             src={siteConfig.introVideo}
-            poster={siteConfig.introPoster}
+            poster={siteConfig.introPoster || undefined}
             autoPlay
             muted={muted}
             playsInline

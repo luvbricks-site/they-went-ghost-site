@@ -1,5 +1,13 @@
+import AssetFrame from "@/components/AssetFrame";
 import SubPageLayout from "@/components/SubPageLayout";
 import { activeMerchProducts, merchCategories } from "@/data/merch";
+
+function formatCents(cents: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(cents / 100);
+}
 
 export default function MerchPage() {
   return (
@@ -12,7 +20,7 @@ export default function MerchPage() {
         {merchCategories.map((category) => (
           <div
             key={category.slug}
-            className="border border-stone-200/15 bg-stone-950/70 p-6"
+            className="twg-panel twg-panel-cut min-h-56 p-6"
           >
             <h2 className="font-display text-4xl uppercase tracking-tighter">
               {category.title}
@@ -35,11 +43,19 @@ export default function MerchPage() {
                 key={product.slug}
                 className="border border-stone-200/15 bg-stone-950/70 p-5"
               >
-                <div className="aspect-square border border-stone-200/10 bg-black" />
+                <AssetFrame
+                  src={product.image}
+                  alt={product.title}
+                  label="Product Image"
+                />
 
                 <h3 className="font-display mt-5 text-3xl uppercase tracking-tighter">
                   {product.title}
                 </h3>
+
+                <p className="mt-2 text-sm font-bold uppercase tracking-[0.2em] text-[#8a6f4d]">
+                  {formatCents(product.priceCents)}
+                </p>
 
                 <p className="mt-3 text-sm text-stone-400">
                   {product.description}
@@ -48,7 +64,7 @@ export default function MerchPage() {
             ))}
           </div>
         ) : (
-          <div className="mt-6 border border-stone-200/15 bg-stone-950/70 p-6">
+          <div className="twg-panel twg-panel-cut mt-6 p-6">
             <p className="text-stone-300">
               Merch products are being prepared. Apparel, music downloads, and
               print-on-demand checkout will be added later.

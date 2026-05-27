@@ -1,9 +1,18 @@
 export const siteConfig = {
   bandName: "They Went Ghost",
   tagline: "Original music from the darker edge of modern rock.",
-  introVideo: "/media/intro.mp4",
-  introPoster: "/media/intro-poster.jpg",
+
+  // Add the real logo path after placing the file in public/brand.
+  // Example: "/brand/they-went-ghost-logo.png"
   logo: "/brand/they-went-ghost-logo.png",
+
+  // Add final intro files after placing them in public/media.
+  // Example: "/media/intro.mp4"
+  introVideo: "",
+
+  // Example: "/media/intro-poster.jpg"
+  introPoster: "",
+
   bookingEmail: "",
 };
 

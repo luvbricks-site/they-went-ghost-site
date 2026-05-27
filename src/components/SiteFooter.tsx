@@ -1,26 +1,14 @@
+import BrandMark from "@/components/BrandMark";
 import Link from "next/link";
 import ReplayIntroButton from "@/components/ReplayIntroButton";
-import { navItems, siteConfig, socialLinks } from "@/data/site";
+import { navItems, socialLinks } from "@/data/site";
 
 export default function SiteFooter() {
   return (
     <footer className="border-t border-stone-200/10 bg-black px-4 py-12 text-stone-400">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center border border-stone-300/30 bg-stone-100 text-sm font-black text-black">
-              TWG
-            </div>
-
-            <div>
-              <p className="font-display text-xl uppercase tracking-[0.12em] text-stone-100">
-                {siteConfig.bandName}
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.28em] text-stone-600">
-                Official Site
-              </p>
-            </div>
-          </div>
+          <BrandMark size="lg" />
 
           <p className="mt-5 max-w-md text-sm leading-6 text-stone-500">
             Original music from the darker edge of modern rock. Serious, cinematic,

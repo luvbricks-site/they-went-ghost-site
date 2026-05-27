@@ -1,3 +1,4 @@
+import AssetFrame from "@/components/AssetFrame";
 import SubPageLayout from "@/components/SubPageLayout";
 import { releases } from "@/data/releases";
 
@@ -14,18 +15,11 @@ export default function MusicPage() {
             key={release.slug}
             className="grid gap-8 border border-stone-200/15 bg-stone-950/70 p-6 lg:grid-cols-[280px_1fr]"
           >
-            <div className="aspect-square border border-stone-200/10 bg-black p-6">
-              <div className="grid h-full place-items-center text-center">
-                <div>
-                  <p className="font-display text-3xl uppercase tracking-tighter">
-                    Cover Art
-                  </p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.25em] text-stone-600">
-                    Placeholder
-                  </p>
-                </div>
-              </div>
-            </div>
+            <AssetFrame
+              src={release.coverImage}
+              alt={`${release.title} cover art`}
+              label="Cover Art"
+            />
 
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-stone-600">
