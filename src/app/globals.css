@@ -109,3 +109,17 @@ body {
 .twg-glitch-hover:hover {
   animation: twg-glitch-shift 180ms steps(2, end) 2;
 }
+.twg-safe-text {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.twg-touch-target {
+  min-height: 44px;
+}
+
+@media (max-width: 640px) {
+  .twg-mobile-tight-title {
+    letter-spacing: -0.08em;
+  }
+}

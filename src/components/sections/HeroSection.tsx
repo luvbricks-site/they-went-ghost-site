@@ -20,35 +20,35 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-12 px-4 py-20 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-4 py-12 sm:py-16 md:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
         <div className="max-w-4xl">
-          <p className="mb-5 text-xs font-bold uppercase tracking-[0.45em] text-[#8a6f4d]">
+          <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.32em] text-[#8a6f4d] sm:mb-5 sm:text-xs sm:tracking-[0.45em]">
             Original Music • Dark Cinematic Rock
           </p>
 
-          <h1 className="twg-glitch font-display text-6xl uppercase leading-[0.84] tracking-[-0.08em] text-stone-100 sm:text-7xl md:text-8xl lg:text-9xl">
+          <h1 className="twg-glitch twg-mobile-tight-title font-display text-5xl uppercase leading-[0.84] tracking-[-0.08em] text-stone-100 sm:text-7xl md:text-8xl lg:text-9xl">
             {siteConfig.bandName}
           </h1>
 
-          <p className="mt-8 max-w-2xl border-l border-stone-200/15 pl-5 text-lg leading-8 text-stone-300 md:text-xl">
+          <p className="mt-6 max-w-2xl border-l border-stone-200/15 pl-4 text-base leading-7 text-stone-300 sm:mt-8 sm:pl-5 sm:text-lg sm:leading-8 md:text-xl">
             {siteConfig.tagline}
           </p>
 
-          <div className="mt-8 max-w-xl border border-stone-200/10 bg-black/30 p-5">
-            <p className="text-xs font-bold uppercase tracking-[0.32em] text-stone-600">
+          <div className="mt-7 max-w-xl border border-stone-200/10 bg-black/30 p-4 sm:mt-8 sm:p-5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-stone-600 sm:text-xs sm:tracking-[0.32em]">
               Featured Release
             </p>
 
-            <p className="font-display mt-3 text-4xl uppercase tracking-tighter text-stone-100">
+            <p className="font-display mt-3 text-3xl uppercase leading-none tracking-tighter text-stone-100 sm:text-4xl">
               {featuredRelease.title}
             </p>
 
-            <p className="mt-2 text-sm uppercase tracking-[0.22em] text-[#8a6f4d]">
+            <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#8a6f4d] sm:tracking-[0.22em]">
               {featuredRelease.releaseDate}
             </p>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 grid gap-3 sm:mt-10 sm:flex sm:flex-wrap">
             <TwgButton href="/listen" variant="primary">
               Listen Now
             </TwgButton>
@@ -56,6 +56,38 @@ export default function HeroSection() {
             <TwgButton href="/videos">Watch Video</TwgButton>
 
             <TwgButton href="/music">View EP</TwgButton>
+          </div>
+        </div>
+
+        <div className="lg:hidden">
+          <div className="grid gap-5">
+            <AssetFrame
+              src={featuredRelease.coverImage}
+              alt={`${featuredRelease.title} cover art`}
+              label="EP Cover"
+              aspect="square"
+              className="mx-auto w-full `max-w-90`"
+            />
+
+            <div className="twg-panel twg-panel-cut p-5">
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#8a6f4d]">
+                Self-Titled EP
+              </p>
+
+              <div className="mt-4 grid gap-2 text-sm text-stone-300">
+                {featuredRelease.tracks.map((track) => (
+                  <div
+                    key={`${track.number}-${track.title}`}
+                    className="twg-safe-text flex gap-3 border-b border-stone-200/10 pb-2"
+                  >
+                    <span className="shrink-0 text-stone-600">
+                      {track.number}
+                    </span>
+                    <span>{track.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -88,9 +120,11 @@ export default function HeroSection() {
                 {featuredRelease.tracks.map((track) => (
                   <div
                     key={`${track.number}-${track.title}`}
-                    className="flex gap-3 border-b border-stone-200/10 pb-2"
+                    className="twg-safe-text flex gap-3 border-b border-stone-200/10 pb-2"
                   >
-                    <span className="text-stone-600">{track.number}</span>
+                    <span className="shrink-0 text-stone-600">
+                      {track.number}
+                    </span>
                     <span>{track.title}</span>
                   </div>
                 ))}

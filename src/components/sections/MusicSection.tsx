@@ -13,15 +13,16 @@ export default function MusicSection() {
 
   return (
     <SectionShell id="music" eyebrow="Latest Release" title={featuredRelease.title}>
-      <div className="grid gap-10 lg:grid-cols-[360px_1fr] lg:items-start">
+      <div className="grid gap-8 lg:grid-cols-[360px_1fr] lg:items-start lg:gap-10">
         <AssetFrame
           src={featuredRelease.coverImage}
           alt={`${featuredRelease.title} cover art`}
           label="Album Art"
+          className="mx-auto w-full max-w-90 lg:max-w-none"
         />
 
         <div>
-          <p className="max-w-3xl text-lg leading-8 text-stone-300">
+          <p className="max-w-3xl text-base leading-7 text-stone-300 sm:text-lg sm:leading-8">
             {featuredRelease.shortDescription}
           </p>
 
@@ -29,7 +30,7 @@ export default function MusicSection() {
             Released {featuredRelease.releaseDate}
           </p>
 
-          <div className="mt-8 twg-panel twg-panel-cut p-5">
+          <div className="mt-8 twg-panel twg-panel-cut p-4 sm:p-5">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-stone-600">
               Track List
             </p>
@@ -38,15 +39,17 @@ export default function MusicSection() {
               {featuredRelease.tracks.map((track) => (
                 <div
                   key={`${track.number}-${track.title}`}
-                  className="flex items-start justify-between gap-4 border-b border-stone-200/10 pb-3"
+                  className="twg-safe-text flex items-start gap-3 border-b border-stone-200/10 pb-3 sm:justify-between sm:gap-4"
                 >
                   <span>
-                    <span className="mr-3 text-stone-600">{track.number}</span>
+                    <span className="mr-3 shrink-0 text-stone-600">
+                      {track.number}
+                    </span>
                     {track.title}
                   </span>
 
                   {track.duration && (
-                    <span className="shrink-0 text-stone-600">
+                    <span className="hidden shrink-0 text-stone-600 sm:inline">
                       {track.duration}
                     </span>
                   )}
@@ -55,12 +58,12 @@ export default function MusicSection() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
             {activeStreamingLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="twg-glitch-hover border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+                className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-200/15 px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
               >
                 {link.label}
               </a>
@@ -69,7 +72,7 @@ export default function MusicSection() {
             {hasPurchaseLink && featuredRelease.purchaseLink && (
               <a
                 href={featuredRelease.purchaseLink.href}
-                className="twg-glitch-hover border border-stone-100 bg-stone-100 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
+                className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-100 bg-stone-100 px-4 py-2 text-center text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
               >
                 {featuredRelease.purchaseLink.label}
               </a>
@@ -77,7 +80,7 @@ export default function MusicSection() {
 
             <Link
               href="/music"
-              className="twg-glitch-hover border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+              className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-200/15 px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
             >
               View Music Page
             </Link>

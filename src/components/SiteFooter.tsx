@@ -5,7 +5,7 @@ import { activeSocialLinks, navItems } from "@/data/site";
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-stone-200/10 bg-black px-4 py-12 text-stone-400">
+    <footer className="border-t border-stone-200/10 bg-black px-4 py-10 text-stone-400 sm:py-12">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
         <div>
           <BrandMark size="lg" />
@@ -25,12 +25,12 @@ export default function SiteFooter() {
             Navigation
           </p>
 
-          <nav className="grid gap-2">
+          <nav className="grid grid-cols-2 gap-2 sm:grid-cols-1">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm uppercase tracking-[0.18em] text-stone-500 transition hover:text-stone-100"
+                className="twg-touch-target inline-flex items-center text-sm uppercase tracking-[0.18em] text-stone-500 transition hover:text-stone-100"
               >
                 {item.label}
               </Link>
@@ -44,12 +44,12 @@ export default function SiteFooter() {
           </p>
 
           {activeSocialLinks.length > 0 ? (
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
               {activeSocialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="border border-stone-200/10 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-500 transition hover:border-stone-100 hover:text-stone-100"
+                  className="twg-touch-target inline-flex items-center justify-center border border-stone-200/10 px-3 py-2 text-center text-xs font-bold uppercase tracking-[0.18em] text-stone-500 transition hover:border-stone-100 hover:text-stone-100"
                 >
                   {link.label}
                 </a>
@@ -61,7 +61,7 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-2 border-t border-stone-200/10 pt-6 text-xs uppercase tracking-[0.2em] text-stone-700 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-2 border-t border-stone-200/10 pt-6 text-xs uppercase tracking-[0.2em] text-stone-700 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} They Went Ghost</p>
         <p>Original Music First</p>
       </div>

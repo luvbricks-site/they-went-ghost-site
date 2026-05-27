@@ -19,26 +19,26 @@ export default function SubPageLayout({
     <main className="min-h-screen bg-black text-stone-100">
       <SiteHeader />
 
-      <section className="relative overflow-hidden border-b border-stone-200/10 px-4 py-20 md:py-28">
+      <section className="relative overflow-hidden border-b border-stone-200/10 px-4 py-16 sm:py-20 md:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(138,111,77,0.18),transparent_35%),linear-gradient(180deg,rgba(12,10,9,0.92),rgba(0,0,0,0.98))]" />
         <div className="absolute inset-0 opacity-[0.06] twg-scratch" />
 
-        <div className="relative mx-auto max-w-7xl border-l border-stone-200/15 pl-5">
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.45em] text-[#8a6f4d]">
+        <div className="relative mx-auto max-w-7xl border-l border-stone-200/15 pl-4 sm:pl-5">
+          <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.32em] text-[#8a6f4d] sm:text-xs sm:tracking-[0.45em]">
             {eyebrow}
           </p>
 
-          <h1 className="twg-glitch font-display max-w-5xl text-5xl uppercase leading-[0.9] tracking-tighter text-stone-100 md:text-7xl">
+          <h1 className="twg-glitch twg-mobile-tight-title font-display max-w-5xl text-5xl uppercase leading-[0.9] tracking-tighter text-stone-100 sm:text-6xl md:text-7xl">
             {title}
           </h1>
 
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-stone-400">
+          <p className="mt-6 max-w-3xl text-base leading-7 text-stone-400 sm:text-lg sm:leading-8">
             {description}
           </p>
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-4 py-16 md:py-20">
+      <section className="relative overflow-hidden px-4 py-14 sm:py-16 md:py-20">
         <div className="absolute inset-0 opacity-[0.025] twg-scratch" />
         <div className="relative mx-auto max-w-7xl">{children}</div>
       </section>
