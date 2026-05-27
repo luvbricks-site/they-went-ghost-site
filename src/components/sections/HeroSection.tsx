@@ -30,14 +30,14 @@ export default function HeroSection() {
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#music"
+              href="/music"
               className="inline-flex items-center justify-center border border-stone-100 bg-stone-100 px-6 py-3 text-xs font-black uppercase tracking-[0.25em] text-black transition hover:bg-transparent hover:text-stone-100"
             >
               Listen to the EP
             </a>
 
             <a
-              href="#videos"
+              href="/videos"
               className="inline-flex items-center justify-center border border-stone-300/30 px-6 py-3 text-xs font-black uppercase tracking-[0.25em] text-stone-100 transition hover:border-stone-100 hover:bg-stone-100 hover:text-black"
             >
               Watch Videos

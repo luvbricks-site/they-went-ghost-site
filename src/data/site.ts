@@ -8,12 +8,13 @@ export const siteConfig = {
 };
 
 export const navItems = [
-  { label: "Music", href: "#music" },
-  { label: "Videos", href: "#videos" },
-  { label: "Shows", href: "#shows" },
-  { label: "Merch", href: "#merch" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Music", href: "/music" },
+  { label: "Listen", href: "/listen" },
+  { label: "Videos", href: "/videos" },
+  { label: "Shows", href: "/shows" },
+  { label: "Merch", href: "/merch" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const socialLinks = [
