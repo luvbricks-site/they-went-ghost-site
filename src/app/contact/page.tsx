@@ -1,3 +1,5 @@
+import ComicCaption from "@/components/ComicCaption";
+import ComicPanel from "@/components/ComicPanel";
 import SubPageLayout from "@/components/SubPageLayout";
 import { activeSocialLinks, siteConfig } from "@/data/site";
 
@@ -8,10 +10,12 @@ export default function ContactPage() {
       title="Booking & Links"
       description={siteConfig.bookingDescription}
     >
-      <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
-        <div className="twg-panel twg-panel-cut p-6">
-          <h2 className="font-display text-4xl uppercase tracking-tighter">
-            Booking
+      <div className="grid gap-6 lg:grid-cols-[1fr_420px]">
+        <ComicPanel className="p-6 sm:p-8" cut="right">
+          <ComicCaption>Booking</ComicCaption>
+
+          <h2 className="font-display mt-6 text-4xl uppercase tracking-tighter text-stone-100">
+            Contact the Band
           </h2>
 
           <p className="mt-4 text-stone-300">{siteConfig.coverGigNote}</p>
@@ -19,21 +23,19 @@ export default function ContactPage() {
           {siteConfig.bookingEmail ? (
             <a
               href={`mailto:${siteConfig.bookingEmail}`}
-              className="mt-6 inline-flex border border-stone-100 bg-stone-100 px-5 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
+              className="twg-glitch-hover twg-touch-target mt-8 inline-flex items-center justify-center border border-stone-100 bg-stone-100 px-5 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
             >
-              Email Booking
+              {siteConfig.bookingEmail}
             </a>
           ) : (
             <p className="mt-6 text-sm text-stone-500">
               Booking email will be added later.
             </p>
           )}
-        </div>
+        </ComicPanel>
 
-        <div className="twg-panel twg-panel-cut p-6">
-          <h2 className="font-display text-4xl uppercase tracking-tighter">
-            Socials
-          </h2>
+        <ComicPanel className="p-6" cut="left">
+          <ComicCaption>Socials</ComicCaption>
 
           {activeSocialLinks.length > 0 ? (
             <div className="mt-6 grid gap-3">
@@ -41,7 +43,7 @@ export default function ContactPage() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="border border-stone-200/15 px-4 py-3 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+                  className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-200/15 px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
                 >
                   {link.label}
                 </a>
@@ -52,7 +54,7 @@ export default function ContactPage() {
               Social links will be added soon.
             </p>
           )}
-        </div>
+        </ComicPanel>
       </div>
     </SubPageLayout>
   );

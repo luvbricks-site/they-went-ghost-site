@@ -19,11 +19,10 @@ export default function SubPageLayout({
     <main className="min-h-screen bg-black text-stone-100">
       <SiteHeader />
 
-      <section className="relative overflow-hidden border-b border-stone-200/10 px-4 py-16 sm:py-20 md:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(138,111,77,0.18),transparent_35%),linear-gradient(180deg,rgba(12,10,9,0.92),rgba(0,0,0,0.98))]" />
+      <section className="twg-comic-page relative overflow-hidden border-b border-stone-200/10 px-4 py-16 sm:py-20 md:py-28">
         <div className="absolute inset-0 opacity-[0.06] twg-scratch" />
 
-        <div className="relative mx-auto max-w-7xl border-l border-stone-200/15 pl-4 sm:pl-5">
+        <div className="relative mx-auto max-w-7xl border-l-2 border-[#8a6f4d]/45 pl-4 sm:pl-5">
           <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.32em] text-[#8a6f4d] sm:text-xs sm:tracking-[0.45em]">
             {eyebrow}
           </p>
@@ -38,7 +37,7 @@ export default function SubPageLayout({
         </div>
       </section>
 
-      <section className="relative overflow-hidden px-4 py-14 sm:py-16 md:py-20">
+      <section className="twg-comic-page relative overflow-hidden px-4 py-14 sm:py-16 md:py-20">
         <div className="absolute inset-0 opacity-[0.025] twg-scratch" />
         <div className="relative mx-auto max-w-7xl">{children}</div>
       </section>

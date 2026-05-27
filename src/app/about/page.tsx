@@ -1,4 +1,6 @@
 import AssetFrame from "@/components/AssetFrame";
+import ComicCaption from "@/components/ComicCaption";
+import ComicPanel from "@/components/ComicPanel";
 import SubPageLayout from "@/components/SubPageLayout";
 import { aboutContent } from "@/data/about";
 
@@ -9,12 +11,16 @@ export default function AboutPage() {
       title="They Went Ghost"
       description={aboutContent.pageIntro}
     >
-      <div className="grid gap-10 lg:grid-cols-[1fr_420px]">
-        <div className="space-y-6 text-stone-300">
-          {aboutContent.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+      <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
+        <ComicPanel className="p-6 sm:p-8" cut="right">
+          <ComicCaption>Original Music First</ComicCaption>
+
+          <div className="mt-8 space-y-6 text-stone-300">
+            {aboutContent.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </ComicPanel>
 
         <div className="space-y-6">
           <AssetFrame
@@ -24,17 +30,17 @@ export default function AboutPage() {
             aspect="poster"
           />
 
-          <aside className="twg-panel twg-panel-cut p-6">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-stone-600">
-              Visual Direction
-            </p>
+          <ComicPanel className="p-6" cut="left">
+            <ComicCaption>Visual Direction</ComicCaption>
 
-            <ul className="mt-5 space-y-3 text-sm text-stone-400">
+            <ul className="mt-6 space-y-3 text-sm text-stone-400">
               {aboutContent.visualDirection.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item} className="border-b border-stone-200/10 pb-2">
+                  {item}
+                </li>
               ))}
             </ul>
-          </aside>
+          </ComicPanel>
         </div>
       </div>
     </SubPageLayout>

@@ -1,4 +1,6 @@
 import AssetFrame from "@/components/AssetFrame";
+import ComicCaption from "@/components/ComicCaption";
+import ComicPanel from "@/components/ComicPanel";
 import SubPageLayout from "@/components/SubPageLayout";
 import { activeMerchProducts, merchCategories } from "@/data/merch";
 
@@ -16,33 +18,33 @@ export default function MerchPage() {
       title="Apparel & Music"
       description="Official They Went Ghost merch. Apparel and digital music products will be available here."
     >
-      <div className="grid gap-4 md:grid-cols-2">
-        {merchCategories.map((category) => (
-          <div
+      <div className="grid gap-5 md:grid-cols-2">
+        {merchCategories.map((category, index) => (
+          <ComicPanel
             key={category.slug}
-            className="twg-panel twg-panel-cut min-h-56 p-6"
+            className="min-h-56 p-6"
+            cut={index % 2 === 0 ? "right" : "left"}
           >
-            <h2 className="font-display text-4xl uppercase tracking-tighter">
+            <ComicCaption>Category</ComicCaption>
+
+            <h2 className="font-display mt-6 text-4xl uppercase tracking-tighter text-stone-100">
               {category.title}
             </h2>
 
             <p className="mt-4 text-stone-400">{category.description}</p>
-          </div>
+          </ComicPanel>
         ))}
       </div>
 
       <div className="mt-12">
-        <h2 className="font-display text-5xl uppercase tracking-tighter">
+        <h2 className="twg-ink-line font-display text-5xl uppercase tracking-tighter">
           Products
         </h2>
 
         {activeMerchProducts.length > 0 ? (
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
             {activeMerchProducts.map((product) => (
-              <article
-                key={product.slug}
-                className="border border-stone-200/15 bg-stone-950/70 p-5"
-              >
+              <ComicPanel key={product.slug} className="p-5">
                 <AssetFrame
                   src={product.image}
                   alt={product.title}
@@ -60,16 +62,18 @@ export default function MerchPage() {
                 <p className="mt-3 text-sm text-stone-400">
                   {product.description}
                 </p>
-              </article>
+              </ComicPanel>
             ))}
           </div>
         ) : (
-          <div className="twg-panel twg-panel-cut mt-6 p-6">
-            <p className="text-stone-300">
+          <ComicPanel className="mt-8 p-6" cut="left">
+            <ComicCaption>Coming Soon</ComicCaption>
+
+            <p className="mt-6 text-stone-300">
               Merch products are being prepared. Apparel, music downloads, and
               print-on-demand checkout will be added later.
             </p>
-          </div>
+          </ComicPanel>
         )}
       </div>
     </SubPageLayout>
