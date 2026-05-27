@@ -14,15 +14,22 @@ export default function SectionShell({
   children,
 }: SectionShellProps) {
   return (
-    <section id={id} className="border-b border-stone-200/10 bg-black px-4 py-20">
-      <div className="mx-auto max-w-7xl">
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.4em] text-stone-600">
-          {eyebrow}
-        </p>
+    <section
+      id={id}
+      className="relative overflow-hidden border-b border-stone-200/10 bg-black/70 px-4 py-20 md:py-28"
+    >
+      <div className="absolute inset-0 opacity-[0.035] twg-scratch" />
 
-        <h2 className="font-display mb-8 text-4xl uppercase tracking-tighter text-stone-100 md:text-6xl">
-          {title}
-        </h2>
+      <div className="relative mx-auto max-w-7xl">
+        <div className="mb-10 flex flex-col gap-4 border-l border-stone-200/15 pl-5">
+          <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#8a6f4d]">
+            {eyebrow}
+          </p>
+
+          <h2 className="twg-glitch font-display max-w-4xl text-4xl uppercase leading-[0.9] tracking-tighter text-stone-100 md:text-6xl">
+            {title}
+          </h2>
+        </div>
 
         {children}
       </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import VisualTexture from "@/components/VisualTexture";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <VisualTexture />
+        <div className="relative z-10">{children}</div>
+      </body>
     </html>
   );
 }

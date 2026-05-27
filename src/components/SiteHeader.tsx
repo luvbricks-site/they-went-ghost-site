@@ -12,7 +12,7 @@ export default function SiteHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-stone-200/10 bg-black/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-stone-200/10 bg-black/85 shadow-[0_1px_0_rgba(200,184,155,0.08)] backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
         <Link href="/" className="group flex items-center gap-3" onClick={closeMobileMenu}>
           <div className="grid h-10 w-10 place-items-center border border-stone-300/30 bg-stone-100 text-sm font-black text-black">
@@ -20,7 +20,7 @@ export default function SiteHeader() {
           </div>
 
           <div>
-            <div className="font-display text-lg uppercase tracking-[0.18em] text-stone-100">
+            <div className="twg-glitch-hover font-display text-lg uppercase tracking-[0.18em] text-stone-100">
               {siteConfig.bandName}
             </div>
             <div className="text-[10px] uppercase tracking-[0.28em] text-stone-500">
