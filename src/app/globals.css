@@ -210,3 +210,49 @@ body {
     grid-template-columns: 1.1fr 0.9fr;
   }
 }
+.twg-home-gutter {
+  background:
+    linear-gradient(90deg, rgba(245, 245, 240, 0.06), transparent 18%, transparent 82%, rgba(245, 245, 240, 0.04)),
+    linear-gradient(180deg, #000 0%, #050505 100%);
+}
+
+.twg-comic-strip {
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid rgba(245, 245, 240, 0.16);
+  border-bottom: 2px solid rgba(245, 245, 240, 0.16);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(200, 184, 155, 0.13), transparent 28%),
+    linear-gradient(135deg, rgba(28, 25, 23, 0.92), rgba(0, 0, 0, 0.98));
+}
+
+.twg-comic-strip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(110deg, transparent 0 28%, rgba(245, 245, 240, 0.05) 28.3%, transparent 29% 100%),
+    linear-gradient(75deg, transparent 0 72%, rgba(138, 111, 77, 0.09) 72.5%, transparent 73% 100%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.twg-issue-number {
+  -webkit-text-stroke: 1px rgba(245, 245, 240, 0.22);
+  color: transparent;
+}
+
+.twg-panel-tilt-left {
+  transform: rotate(-1deg);
+}
+
+.twg-panel-tilt-right {
+  transform: rotate(1deg);
+}
+
+@media (max-width: 768px) {
+  .twg-panel-tilt-left,
+  .twg-panel-tilt-right {
+    transform: none;
+  }
+}

@@ -1,3 +1,5 @@
+import ComicCaption from "@/components/ComicCaption";
+import ComicPanel from "@/components/ComicPanel";
 import SectionShell from "@/components/sections/SectionShell";
 import { activeSocialLinks, siteConfig } from "@/data/site";
 import Link from "next/link";
@@ -5,47 +7,57 @@ import Link from "next/link";
 export default function ContactSection() {
   return (
     <SectionShell id="contact" eyebrow="Contact" title="Booking & Links">
-      <div className="max-w-3xl">
-        <p className="text-stone-300">{siteConfig.bookingDescription}</p>
+      <div className="grid gap-6 lg:grid-cols-[1fr_420px]">
+        <ComicPanel className="p-6" cut="right">
+          <ComicCaption>Booking</ComicCaption>
 
-        {siteConfig.bookingEmail ? (
-          <a
-            href={`mailto:${siteConfig.bookingEmail}`}
-            className="mt-6 inline-flex border border-stone-100 bg-stone-100 px-5 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
-          >
-            Email Booking
-          </a>
-        ) : (
-          <p className="mt-6 text-sm text-stone-500">
-            Booking email will be added later.
+          <p className="mt-6 text-stone-300">
+            {siteConfig.bookingDescription}
           </p>
-        )}
-      </div>
 
-      {activeSocialLinks.length > 0 ? (
-        <div className="mt-8 flex flex-wrap gap-3">
-          {activeSocialLinks.map((link) => (
+          {siteConfig.bookingEmail ? (
             <a
-              key={link.label}
-              href={link.href}
-              className="border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+              href={`mailto:${siteConfig.bookingEmail}`}
+              className="twg-glitch-hover twg-touch-target mt-8 inline-flex items-center justify-center border border-stone-100 bg-stone-100 px-5 py-3 text-center text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
             >
-              {link.label}
+              {siteConfig.bookingEmail}
             </a>
-          ))}
-        </div>
-      ) : (
-        <p className="mt-8 text-sm text-stone-600">
-          Social links will be added soon.
-        </p>
-      )}
+          ) : (
+            <p className="mt-6 text-sm text-stone-500">
+              Booking email will be added later.
+            </p>
+          )}
+        </ComicPanel>
 
-      <Link
-        href="/contact"
-        className="mt-8 inline-flex border border-stone-100 bg-stone-100 px-5 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
-      >
-        Contact / Booking
-      </Link>
+        <ComicPanel className="p-6" cut="left">
+          <ComicCaption>Socials</ComicCaption>
+
+          {activeSocialLinks.length > 0 ? (
+            <div className="mt-6 grid gap-3">
+              {activeSocialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-200/15 px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-6 text-sm text-stone-500">
+              Social links will be added soon.
+            </p>
+          )}
+
+          <Link
+            href="/contact"
+            className="twg-glitch-hover twg-touch-target mt-8 inline-flex items-center justify-center border border-stone-200/15 px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+          >
+            Contact Page
+          </Link>
+        </ComicPanel>
+      </div>
     </SectionShell>
   );
 }

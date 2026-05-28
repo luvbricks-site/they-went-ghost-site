@@ -1,4 +1,6 @@
 import AssetFrame from "@/components/AssetFrame";
+import ComicCaption from "@/components/ComicCaption";
+import ComicPanel from "@/components/ComicPanel";
 import SectionShell from "@/components/sections/SectionShell";
 import { featuredRelease } from "@/data/releases";
 import { isActiveHref } from "@/lib/links";
@@ -18,11 +20,13 @@ export default function MusicSection() {
           src={featuredRelease.coverImage}
           alt={`${featuredRelease.title} cover art`}
           label="Album Art"
-          className="mx-auto w-full max-w-90 lg:max-w-none"
+          className="twg-panel-tilt-left mx-auto w-full max-w-90 lg:max-w-none"
         />
 
-        <div>
-          <p className="max-w-3xl text-base leading-7 text-stone-300 sm:text-lg sm:leading-8">
+        <ComicPanel className="p-5 sm:p-6" cut="right">
+          <ComicCaption>Self-Titled EP</ComicCaption>
+
+          <p className="mt-6 max-w-3xl text-base leading-7 text-stone-300 sm:text-lg sm:leading-8">
             {featuredRelease.shortDescription}
           </p>
 
@@ -30,7 +34,7 @@ export default function MusicSection() {
             Released {featuredRelease.releaseDate}
           </p>
 
-          <div className="mt-8 twg-panel twg-panel-cut p-4 sm:p-5">
+          <div className="mt-8 border-y border-stone-200/10 py-5">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-stone-600">
               Track List
             </p>
@@ -39,20 +43,10 @@ export default function MusicSection() {
               {featuredRelease.tracks.map((track) => (
                 <div
                   key={`${track.number}-${track.title}`}
-                  className="twg-safe-text flex items-start gap-3 border-b border-stone-200/10 pb-3 sm:justify-between sm:gap-4"
+                  className="twg-safe-text grid grid-cols-[42px_1fr] gap-3 border-b border-stone-200/10 pb-3 last:border-b-0 last:pb-0"
                 >
-                  <span>
-                    <span className="mr-3 shrink-0 text-stone-600">
-                      {track.number}
-                    </span>
-                    {track.title}
-                  </span>
-
-                  {track.duration && (
-                    <span className="hidden shrink-0 text-stone-600 sm:inline">
-                      {track.duration}
-                    </span>
-                  )}
+                  <span className="text-stone-600">{track.number}</span>
+                  <span>{track.title}</span>
                 </div>
               ))}
             </div>
@@ -85,13 +79,7 @@ export default function MusicSection() {
               View Music Page
             </Link>
           </div>
-
-          {activeStreamingLinks.length === 0 && !hasPurchaseLink && (
-            <p className="mt-5 text-sm text-stone-600">
-              Streaming and digital download links will be added soon.
-            </p>
-          )}
-        </div>
+        </ComicPanel>
       </div>
     </SectionShell>
   );
