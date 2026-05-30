@@ -1,5 +1,5 @@
 export const aboutContent = {
-  bandPhoto: "/photos/TWG-Promo.img02.png",
+  bandPhoto: "/photos/group_toon.png",
 
   homepageSummary:
     "They Went Ghost is an original-music-first rock band with a serious, dark, cinematic identity.",

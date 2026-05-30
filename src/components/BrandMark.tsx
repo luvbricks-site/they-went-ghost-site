@@ -33,7 +33,7 @@ export default function BrandMark({
             alt={`${siteConfig.bandName} logo`}
             fill
             sizes="56px"
-            className="object-contain p-1"
+            className="scale-[1.45] object-contain p-0"
             priority
           />
         </div>
@@ -48,7 +48,7 @@ export default function BrandMark({
       {showText && (
         <div className="min-w-0">
           <div
-            className={`twg-glitch-hover twg-safe-text font-display uppercase leading-none tracking-[0.12em] text-stone-100 sm:tracking-[0.18em] ${textSize}`}
+            className={`twg-glitch-hover twg-safe-text font-band uppercase leading-none tracking-[0.08em] text-stone-100 sm:tracking-[0.12em] ${textSize}`}
           >
             {siteConfig.bandName}
           </div>

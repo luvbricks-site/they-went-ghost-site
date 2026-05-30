@@ -5,6 +5,7 @@ import TwgButton from "@/components/TwgButton";
 import { aboutContent } from "@/data/about";
 import { featuredRelease } from "@/data/releases";
 import { siteConfig } from "@/data/site";
+import { bandMembers } from "@/data/bandMembers";
 
 export default function HeroSection() {
   return (
@@ -20,7 +21,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative mx-auto grid min-h-[90vh] max-w-7xl items-center gap-10 px-4 py-12 sm:py-16 md:py-20 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+      <div className="relative mx-auto grid min-h-[90vh] max-w-7xl items-center gap-10 px-4 py-12 sm:py-16 md:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
         <div className="max-w-4xl">
           <ComicCaption>Official Site • Album Promo</ComicCaption>
 
@@ -28,7 +29,7 @@ export default function HeroSection() {
             Original Music • Dark Cinematic Rock
           </p>
 
-          <h1 className="twg-glitch twg-mobile-tight-title font-display mt-4 text-5xl uppercase leading-[0.84] tracking-[-0.08em] text-stone-100 sm:text-7xl md:text-8xl lg:text-9xl">
+          <h1 className="twg-glitch twg-mobile-tight-title font-band mt-5 text-5xl uppercase leading-[0.88] tracking-[-0.03em] text-stone-100 sm:text-7xl md:text-8xl lg:text-9xl">
             {siteConfig.bandName}
           </h1>
 
@@ -61,42 +62,70 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="grid gap-5">
-          <div className="grid gap-5 md:grid-cols-[1.06fr_0.94fr] md:items-start">
+        <div className="hidden lg:grid gap-5">
+          <AssetFrame
+            src={aboutContent.bandPhoto}
+            alt="They Went Ghost band promo photo"
+            label="Band Photo"
+            aspect="wide"
+            imageClassName="object-contain bg-black"
+            className="twg-panel-tilt-left w-full"
+          />
+
+          <div className="grid grid-cols-[0.42fr_0.58fr] gap-5">
             <AssetFrame
-              src={aboutContent.bandPhoto}
-              alt="They Went Ghost band promo photo"
-              label="Band Photo"
-              aspect="poster"
-              className="twg-panel-tilt-left mx-auto w-full max-w-105 md:max-w-none"
+              src={featuredRelease.coverImage}
+              alt={`${featuredRelease.title} cover art`}
+              label="EP Cover"
+              aspect="square"
+              className="twg-panel-tilt-right"
             />
 
-            <div className="grid gap-5">
-              <AssetFrame
-                src={featuredRelease.coverImage}
-                alt={`${featuredRelease.title} cover art`}
-                label="EP Cover"
-                aspect="square"
-                className="twg-panel-tilt-right mx-auto w-full max-w-90 md:max-w-none"
-              />
+            <ComicPanel className="p-5" cut="right">
+              <ComicCaption>Track List</ComicCaption>
 
-              <ComicPanel className="p-5" cut="right">
-                <ComicCaption>Track List</ComicCaption>
-
-                <div className="mt-5 grid gap-2 text-sm text-stone-300">
-                  {featuredRelease.tracks.map((track) => (
-                    <div
-                      key={`${track.number}-${track.title}`}
-                      className="twg-safe-text grid grid-cols-[36px_1fr] gap-3 border-b border-stone-200/10 pb-2 last:border-b-0 last:pb-0"
-                    >
-                      <span className="text-stone-600">{track.number}</span>
-                      <span>{track.title}</span>
-                    </div>
-                  ))}
-                </div>
-              </ComicPanel>
-            </div>
+              <div className="mt-5 grid gap-2 text-sm text-stone-300">
+                {featuredRelease.tracks.map((track) => (
+                  <div
+                    key={`${track.number}-${track.title}`}
+                    className="twg-safe-text grid grid-cols-[36px_1fr] gap-3 border-b border-stone-200/10 pb-2 last:border-b-0 last:pb-0"
+                  >
+                    <span className="text-stone-600">{track.number}</span>
+                    <span>{track.title}</span>
+                  </div>
+                ))}
+              </div>
+            </ComicPanel>
           </div>
+
+          <div className="grid grid-cols-4 gap-5">
+  {bandMembers.map((member, index) => (
+    <ComicPanel
+      key={member.name}
+      className="aspect-3/4 p-2"
+      cut={index % 2 === 0 ? "left" : "right"}
+    >
+      <div className="relative h-full overflow-hidden border border-stone-200/10 bg-black">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={member.image}
+          alt={`${member.name} — ${member.role}`}
+          className="h-full w-full object-cover"
+        />
+
+        <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black via-black/75 to-transparent p-3">
+          <p className="font-display text-lg uppercase leading-none tracking-tighter text-stone-100">
+            {member.name}
+          </p>
+
+          <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[#c8b89b]">
+            {member.role}
+          </p>
+        </div>
+      </div>
+    </ComicPanel>
+  ))}
+</div>
         </div>
       </div>
     </section>

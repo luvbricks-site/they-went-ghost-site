@@ -5,7 +5,7 @@ type AssetFrameProps = {
   alt: string;
   label: string;
   sublabel?: string;
-  aspect?: "square" | "video" | "poster";
+  aspect?: "square" | "video" | "poster" | "wide";
   className?: string;
   imageClassName?: string;
 };
@@ -23,6 +23,7 @@ export default function AssetFrame({
     square: "aspect-square",
     video: "aspect-video",
     poster: "aspect-[4/5]",
+    wide: "aspect-[16/9]",
   }[aspect];
 
   return (
@@ -35,7 +36,7 @@ export default function AssetFrame({
             src={src}
             alt={alt}
             fill
-            sizes="(min-width: 1024px) 360px, 100vw"
+            sizes="(min-width: 1024px) 520px, 100vw"
             className={imageClassName}
           />
         ) : (

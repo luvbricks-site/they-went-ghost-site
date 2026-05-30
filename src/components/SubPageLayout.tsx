@@ -27,7 +27,11 @@ export default function SubPageLayout({
             {eyebrow}
           </p>
 
-          <h1 className="twg-glitch twg-mobile-tight-title font-display max-w-5xl text-5xl uppercase leading-[0.9] tracking-tighter text-stone-100 sm:text-6xl md:text-7xl">
+          <h1 className={`twg-glitch twg-mobile-tight-title max-w-5xl text-5xl uppercase leading-[0.9] text-stone-100 sm:text-6xl md:text-7xl ${
+                title === "THEY WENT GHOST"
+                  ? "font-band tracking-[-0.03em]"
+                  : "font-display tracking-tighter"
+              }`}>
             {title}
           </h1>
 
