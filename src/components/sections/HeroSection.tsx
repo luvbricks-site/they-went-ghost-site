@@ -23,10 +23,13 @@ export default function HeroSection() {
       <div className="relative mx-auto grid min-h-[90vh] max-w-7xl items-center gap-10 px-4 py-12 sm:py-16 md:py-20 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
         {/* LEFT SIDE: album cover feature */}
         <div className="max-w-xl">
-          <ComicCaption>Official Site • Album Promo</ComicCaption>
+          <div className="space-y-3">
+            <ComicCaption>Official Site • Album Promo</ComicCaption>
 
-          <div className="max-w-xl">
-          <ComicCaption>ISSUE O1</ComicCaption></div>
+          <div>
+            <ComicCaption>ISSUE 01</ComicCaption>
+          </div>
+        </div>
 
           <div className="mt-5">
             <AssetFrame
