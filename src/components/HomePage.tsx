@@ -19,7 +19,7 @@ export default function HomePage() {
       <HomeComicBreak
         eyebrow="Issue 01"
         title="The Self-Titled EP"
-        description="The first spread centers on the newest They Went Ghost release: four tracks, official streaming links, and the visual world around the record."
+        description=""
         issueLabel="01"
       />
 
@@ -28,7 +28,7 @@ export default function HomePage() {
       <HomeComicBreak
         eyebrow="Dark Theater"
         title="Watch the Signal"
-        description="The video section keeps the site focused on official YouTube views while presenting the music in a cinematic theater-style frame."
+        description=""
         issueLabel="02"
       />
 
@@ -37,7 +37,7 @@ export default function HomePage() {
       <HomeComicBreak
         eyebrow="Live / Merch / Identity"
         title="Everything Else Lives in the Margins"
-        description="Shows, merch, and the band story stay connected to the original-music-first identity without turning the site into a generic store or cover-band page."
+        description=""
         issueLabel="03"
       />
 
@@ -48,7 +48,7 @@ export default function HomePage() {
       <HomeComicBreak
         eyebrow="Final Panel"
         title="Booking, Links, and Contact"
-        description="The last homepage section gives visitors a clear route to booking, social links, streaming platforms, and official contact information."
+        description=""
         issueLabel="04"
       />
 

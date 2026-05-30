@@ -60,6 +60,40 @@ body {
     sans-serif;
 }
 
+.font-comic-copy {
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    "Trebuchet MS",
+    system-ui,
+    sans-serif;
+}
+
+.twg-copy {
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    "Trebuchet MS",
+    system-ui,
+    sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.65;
+}
+
+.twg-copy-caps {
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    "Trebuchet MS",
+    system-ui,
+    sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
 .twg-noise {
   background-image:
     radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.22) 0 1px, transparent 1px),

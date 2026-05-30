@@ -2,7 +2,7 @@ export const aboutContent = {
   bandPhoto: "/photos/group_toon.png",
 
   homepageSummary:
-    "They Went Ghost is an original-music-first rock band with a serious, dark, cinematic identity.",
+    "The current line up seamlessly fuses an inspired blend of progressive rock, reggae, and hip hop influences, capturing the attention of audiences everywhere they perform. The band continues carving out a distinct lane with their energetic live performances and skillfully crafted songs.",
 
   pageIntro:
     "A dark cinematic rock project focused first on original music.",

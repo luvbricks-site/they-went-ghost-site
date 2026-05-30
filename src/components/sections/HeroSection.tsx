@@ -3,9 +3,8 @@ import ComicCaption from "@/components/ComicCaption";
 import ComicPanel from "@/components/ComicPanel";
 import TwgButton from "@/components/TwgButton";
 import { aboutContent } from "@/data/about";
-import { featuredRelease } from "@/data/releases";
-import { siteConfig } from "@/data/site";
 import { bandMembers } from "@/data/bandMembers";
+import { featuredRelease } from "@/data/releases";
 
 export default function HeroSection() {
   return (
@@ -21,37 +20,25 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative mx-auto grid min-h-[90vh] max-w-7xl items-center gap-10 px-4 py-12 sm:py-16 md:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-        <div className="max-w-4xl">
+      <div className="relative mx-auto grid min-h-[90vh] max-w-7xl items-center gap-10 px-4 py-12 sm:py-16 md:py-20 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+        {/* LEFT SIDE: album cover feature */}
+        <div className="max-w-xl">
           <ComicCaption>Official Site • Album Promo</ComicCaption>
 
-          <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.32em] text-[#8a6f4d] sm:text-xs sm:tracking-[0.45em]">
-            Original Music • Dark Cinematic Rock
-          </p>
+          <div className="max-w-xl">
+          <ComicCaption>ISSUE O1</ComicCaption></div>
 
-          <h1 className="twg-glitch twg-mobile-tight-title font-band mt-5 text-5xl uppercase leading-[0.88] tracking-[-0.03em] text-stone-100 sm:text-7xl md:text-8xl lg:text-9xl">
-            {siteConfig.bandName}
-          </h1>
+          <div className="mt-5">
+            <AssetFrame
+              src={featuredRelease.coverImage}
+              alt={`${featuredRelease.title} cover art`}
+              label="Album Cover"
+              aspect="square"
+              className="twg-panel-tilt-left mx-auto w-full max-w-140"
+            />
+          </div>
 
-          <p className="mt-6 max-w-2xl border-l-2 border-[#8a6f4d]/45 pl-4 text-base leading-7 text-stone-300 sm:mt-8 sm:pl-5 sm:text-lg sm:leading-8 md:text-xl">
-            {siteConfig.tagline}
-          </p>
-
-          <ComicPanel className="mt-7 p-5 sm:mt-8" cut="left">
-            <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-stone-600 sm:text-xs sm:tracking-[0.32em]">
-              Featured Release
-            </p>
-
-            <p className="font-display mt-3 text-3xl uppercase leading-none tracking-tighter text-stone-100 sm:text-4xl">
-              {featuredRelease.title}
-            </p>
-
-            <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#8a6f4d] sm:tracking-[0.22em]">
-              {featuredRelease.releaseDate}
-            </p>
-          </ComicPanel>
-
-          <div className="mt-8 grid gap-3 sm:mt-10 sm:flex sm:flex-wrap">
+          <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
             <TwgButton href="/listen" variant="primary">
               Listen Now
             </TwgButton>
@@ -62,6 +49,7 @@ export default function HeroSection() {
           </div>
         </div>
 
+        {/* RIGHT SIDE: band photo, members, short bio */}
         <div className="hidden lg:grid gap-5">
           <AssetFrame
             src={aboutContent.bandPhoto}
@@ -69,63 +57,45 @@ export default function HeroSection() {
             label="Band Photo"
             aspect="wide"
             imageClassName="object-contain bg-black"
-            className="twg-panel-tilt-left w-full"
+            className="twg-panel-tilt-right w-full"
           />
 
-          <div className="grid grid-cols-[0.42fr_0.58fr] gap-5">
-            <AssetFrame
-              src={featuredRelease.coverImage}
-              alt={`${featuredRelease.title} cover art`}
-              label="EP Cover"
-              aspect="square"
-              className="twg-panel-tilt-right"
-            />
+          <div className="grid grid-cols-4 gap-5">
+            {bandMembers.map((member, index) => (
+              <ComicPanel
+                key={member.name}
+                className="aspect-3/4 p-2"
+                cut={index % 2 === 0 ? "left" : "right"}
+              >
+                <div className="relative h-full overflow-hidden border border-stone-200/10 bg-black">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={member.image}
+                    alt={`${member.name} — ${member.role}`}
+                    className="h-full w-full object-cover"
+                  />
 
-            <ComicPanel className="p-5" cut="right">
-              <ComicCaption>Track List</ComicCaption>
+                  <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black via-black/75 to-transparent p-3">
+                    <p className="twg-safe-text font-display text-base uppercase leading-none tracking-tighter text-stone-100">
+                      {member.name}
+                    </p>
 
-              <div className="mt-5 grid gap-2 text-sm text-stone-300">
-                {featuredRelease.tracks.map((track) => (
-                  <div
-                    key={`${track.number}-${track.title}`}
-                    className="twg-safe-text grid grid-cols-[36px_1fr] gap-3 border-b border-stone-200/10 pb-2 last:border-b-0 last:pb-0"
-                  >
-                    <span className="text-stone-600">{track.number}</span>
-                    <span>{track.title}</span>
+                    <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[#c8b89b]">
+                      {member.role}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </ComicPanel>
+                </div>
+              </ComicPanel>
+            ))}
           </div>
 
-          <div className="grid grid-cols-4 gap-5">
-  {bandMembers.map((member, index) => (
-    <ComicPanel
-      key={member.name}
-      className="aspect-3/4 p-2"
-      cut={index % 2 === 0 ? "left" : "right"}
-    >
-      <div className="relative h-full overflow-hidden border border-stone-200/10 bg-black">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={member.image}
-          alt={`${member.name} — ${member.role}`}
-          className="h-full w-full object-cover"
-        />
+          <ComicPanel className="p-5" cut="left">
+            <ComicCaption>Short Band Bio</ComicCaption>
 
-        <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black via-black/75 to-transparent p-3">
-          <p className="font-display text-lg uppercase leading-none tracking-tighter text-stone-100">
-            {member.name}
-          </p>
-
-          <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[#c8b89b]">
-            {member.role}
-          </p>
-        </div>
-      </div>
-    </ComicPanel>
-  ))}
-</div>
+            <p className="twg-copy-caps mt-5 text-sm text-stone-300">
+              {aboutContent.homepageSummary}
+            </p>
+          </ComicPanel>
         </div>
       </div>
     </section>
