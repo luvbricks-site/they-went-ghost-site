@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function VideoSection() {
   return (
-    <SectionShell id="videos" eyebrow="Videos" title="Dark Theater Mode">
+    <SectionShell id="videos" eyebrow="Videos" title="THE INTERCEPTED SIGNAL">
       <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
         <ComicPanel className="p-3 sm:p-4" cut="none">
           <div className="aspect-video border border-stone-200/15 bg-stone-950 shadow-2xl">

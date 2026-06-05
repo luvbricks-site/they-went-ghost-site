@@ -7,7 +7,7 @@ export default function VideosPage() {
   return (
     <SubPageLayout
       eyebrow="Videos"
-      title="Dark Theater"
+      title="THE INTERCEPED SIGNAL"
       description="Official They Went Ghost music videos and promo videos embedded from YouTube."
     >
       <div className="grid gap-10">

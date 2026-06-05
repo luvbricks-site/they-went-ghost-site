@@ -18,7 +18,7 @@ export default function HomePage() {
 
       <HomeComicBreak
         eyebrow="Chapter 1"
-        title="A LOW RUMBLE FROM THE SEWER GRATES"
+        title="!BOOM! A LOW RUMBLE FROM THE SEWER"
         description=""
         issueLabel="01"
       />
@@ -26,8 +26,8 @@ export default function HomePage() {
       <MusicSection />
 
       <HomeComicBreak
-        eyebrow="Dark Theater"
-        title="Watch the Signal"
+        eyebrow="Chapter 2"
+        title="!BUZZZ!...OUR HEROES HAVE RISEN...!HISS!"
         description=""
         issueLabel="02"
       />
@@ -35,8 +35,8 @@ export default function HomePage() {
       <VideoSection />
 
       <HomeComicBreak
-        eyebrow="Live / Merch / Identity"
-        title="Everything Else Lives in the Margins"
+        eyebrow="Chapter 3"
+        title="!BANG!...RETAKING THE CITY...!BOOM!"
         description=""
         issueLabel="03"
       />
@@ -46,8 +46,8 @@ export default function HomePage() {
       <AboutSection />
 
       <HomeComicBreak
-        eyebrow="Final Panel"
-        title="Booking, Links, and Contact"
+        eyebrow="The Final Chapter"
+        title="VICTORY! THE CITY IS OURS! FOR NOW..."
         description=""
         issueLabel="04"
       />

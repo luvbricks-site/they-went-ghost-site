@@ -1,5 +1,3 @@
-import ComicCaption from "@/components/ComicCaption";
-
 type HomeComicBreakProps = {
   eyebrow: string;
   title: string;
@@ -11,28 +9,32 @@ export default function HomeComicBreak({
   eyebrow,
   title,
   description,
-  issueLabel = "TWG",
+  issueLabel = "01",
 }: HomeComicBreakProps) {
   return (
-    <section className="twg-home-gutter relative border-b border-stone-200/10 px-4 py-8 sm:py-10">
+    <section className="twg-home-gutter relative border-b border-stone-200/10 px-4 py-5 sm:py-6">
       <div className="mx-auto max-w-7xl">
-        <div className="twg-comic-strip p-5 sm:p-6">
-          <div className="relative z-10 grid gap-5 md:grid-cols-[220px_1fr_120px] md:items-center">
+        <div className="twg-comic-strip p-4 sm:p-5 md:p-5">
+          <div className="relative z-10 grid gap-3 md:grid-cols-[140px_minmax(0,1fr)_80px] md:items-center">
             <div>
-              <ComicCaption>{eyebrow}</ComicCaption>
+              <span className="twg-break-bubble">{eyebrow}</span>
             </div>
 
-            <div>
-              <h2 className="font-display text-3xl uppercase leading-none tracking-tighter text-stone-100 sm:text-4xl md:text-5xl">
-                {title}
-              </h2>
+            <div className="flex justify-center">
+              <div className="twg-break-speech mx-auto">
+                <h2 className="twg-break-speech-title text-2xl sm:text-3xl md:text-[2.75rem] md:whitespace-nowrap">
+                  {title}
+                </h2>
 
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-stone-400">
-                {description}
-              </p>
+                {description && (
+                  <p className="twg-break-speech-description">
+                    {description}
+                  </p>
+                )}
+              </div>
             </div>
 
-            <div className="hidden justify-self-end font-display text-6xl uppercase leading-none tracking-tighter twg-issue-number md:block">
+            <div className="hidden justify-self-end font-display text-5xl uppercase leading-none tracking-tight twg-issue-number md:block">
               {issueLabel}
             </div>
           </div>
