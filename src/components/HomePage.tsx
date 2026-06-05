@@ -17,8 +17,8 @@ export default function HomePage() {
       <HeroSection />
 
       <HomeComicBreak
-        eyebrow="Issue 01"
-        title="The Self-Titled EP"
+        eyebrow="Chapter 1"
+        title="A LOW RUMBLE FROM THE SEWER GRATES"
         description=""
         issueLabel="01"
       />

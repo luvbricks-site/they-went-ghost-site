@@ -93,7 +93,7 @@ export default function HeroSection() {
           </div>
 
           <ComicPanel className="p-5" cut="left">
-            <ComicCaption>Short Band Bio</ComicCaption>
+            <ComicCaption>About our Heroes</ComicCaption>
 
             <p className="twg-copy-caps mt-5 text-sm text-stone-300">
               {aboutContent.homepageSummary}
