@@ -1,14 +1,14 @@
 import ComicCaption from "@/components/ComicCaption";
 import ComicPanel from "@/components/ComicPanel";
 import SubPageLayout from "@/components/SubPageLayout";
-import { upcomingShows } from "@/data/shows";
+import { showsSectionContent, upcomingShows } from "@/data/shows";
 
 export default function ShowsPage() {
   return (
     <SubPageLayout
       eyebrow="Shows"
-      title="Upcoming Shows"
-      description="Upcoming live dates, venue information, ticket links, and booking details."
+      title={showsSectionContent.title}
+      description={showsSectionContent.summary}
     >
       {upcomingShows.length > 0 ? (
         <div className="grid gap-6">
@@ -18,7 +18,7 @@ export default function ShowsPage() {
                 {show.date} • {show.time}
               </ComicCaption>
 
-              <h2 className="font-display mt-6 text-5xl uppercase tracking-tighter">
+              <h2 className="font-display mt-6 text-5xl uppercase leading-none tracking-tighter">
                 {show.title}
               </h2>
 
@@ -26,15 +26,25 @@ export default function ShowsPage() {
                 {show.venue} — {show.city}, {show.state}
               </p>
 
-              {show.ageRestriction && (
-                <p className="mt-2 text-sm text-stone-500">
-                  {show.ageRestriction}
-                </p>
-              )}
+              <div className="mt-5 flex flex-wrap gap-2">
+                {show.ageRestriction && (
+                  <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
+                    {show.ageRestriction}
+                  </span>
+                )}
 
-              {show.lineup && (
-                <p className="mt-2 text-sm text-stone-500">{show.lineup}</p>
-              )}
+                {show.doorFee && (
+                  <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
+                    {show.doorFee}
+                  </span>
+                )}
+
+                {show.lineup && (
+                  <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
+                    {show.lineup}
+                  </span>
+                )}
+              </div>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 {show.ticketUrl && (
