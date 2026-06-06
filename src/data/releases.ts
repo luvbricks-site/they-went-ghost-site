@@ -29,7 +29,7 @@ export const featuredRelease: MusicRelease = {
   coverImage: "/releases/twg-ep-cover-art.jpg",
 
   shortDescription:
-    "The self-titled EP opens like the first issue of a wreckage-stained love story. Two people fall hard, the spark turns volatile, and what started as Smitten twists into Better Off. When the split hits, the man slips into the bottle, spiraling through Lush until he reaches the edge in A Breath Away From Drowning. The fall ends here — what crawls out of it is a story for next time....",
+    "The self-titled EP opens like the first issue of a wreckage-stained love story. Two people fall hard, the spark turns volatile, and what started as Smitten twists into Better Off. When the split hits, the man slips into the bottle, spiraling through Lush until he reaches the edge in A Breath Away From Drowning. The fall ends here, what crawls out of it is a story for next time....",
 
   tracks: [
     {
