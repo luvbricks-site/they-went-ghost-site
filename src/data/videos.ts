@@ -17,7 +17,7 @@ export const videos: MusicVideo[] = [
     youtubeId: "",
     youtubeUrl: "",
     description:
-      "Official They Went Ghost music videos will be embedded here from YouTube so views stay connected to the official channel.",
+      "Every signal leaves a trace. These videos catch our Heroes in motion — four figures moving through the static, dragging their sound out of the dark and into frame. What starts as a transmission becomes proof: our heroes are still out there, and the noise is getting closer.",
     isFeatured: true,
   },
 ];
