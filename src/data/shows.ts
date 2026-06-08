@@ -22,17 +22,22 @@ export const showsSectionContent = {
 
 export const upcomingShows: Show[] = [
   {
-    slug: "g-street-wunderbar-davis-july-18-2026",
-    title: "G-Street Wunderbar",
-    date: "Saturday, July 18, 2026",
-    time: "7:00 PM - 10:00 PM",
-    venue: "G-Street Wunderbar",
-    city: "Davis",
-    state: "CA",
-    ageRestriction: "21+",
-    doorFee: "No door fee",
-    lineup: "They Went Ghost",
-  },
+  slug: "g-street-wunderbar-davis-july-18-2026",
+  title: "G-Street Wunderbar",
+  date: "Saturday, July 18, 2026",
+  time: "7:00 PM - 10:00 PM",
+  venue: "G-Street Wunderbar",
+  city: "Davis",
+  state: "CA",
+
+  // Add the flyer here after placing it in public/shows.
+  // Example: "/shows/g-street-wunderbar-davis-july-18-2026.jpg"
+  flyerImage: "",
+
+  ageRestriction: "21+",
+  doorFee: "No door fee",
+  lineup: "They Went Ghost",
+},
 ];
 
 export const nextShow = upcomingShows[0] ?? null;

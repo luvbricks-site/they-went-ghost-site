@@ -1,3 +1,4 @@
+import AssetFrame from "@/components/AssetFrame";
 import ComicCaption from "@/components/ComicCaption";
 import ComicPanel from "@/components/ComicPanel";
 import SectionShell from "@/components/sections/SectionShell";
@@ -23,52 +24,29 @@ export default function ShowsSection() {
             href="/shows"
             className="twg-glitch-hover twg-touch-target mt-8 inline-flex items-center justify-center border border-stone-200/15 px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
           >
-            Ckick for more shows
+            View Shows Page
           </Link>
         </ComicPanel>
 
-        <ComicPanel className="p-6" cut="left">
-          {nextShow ? (
-            <>
-              <ComicCaption>Next Show</ComicCaption>
+        {nextShow ? (
+          <AssetFrame
+            src={nextShow.flyerImage}
+            alt={`${nextShow.title} flyer`}
+            label="Show Flyer"
+            sublabel="Coming Soon"
+            aspect="poster"
+            className="mx-auto w-full max-w-105 lg:max-w-none"
+          />
+        ) : (
+          <ComicPanel className="p-6" cut="left">
+            <ComicCaption>No Dates Listed</ComicCaption>
 
-              <p className="mt-6 text-xs font-bold uppercase tracking-[0.28em] text-[#8a6f4d]">
-                {nextShow.date} • {nextShow.time}
-              </p>
-
-              <h3 className="font-display mt-4 text-4xl uppercase leading-none tracking-tighter text-stone-100">
-                {nextShow.title}
-              </h3>
-
-              <p className="mt-4 text-stone-300">
-                {nextShow.venue} — {nextShow.city}, {nextShow.state}
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {nextShow.ageRestriction && (
-                  <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
-                    {nextShow.ageRestriction}
-                  </span>
-                )}
-
-                {nextShow.doorFee && (
-                  <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
-                    {nextShow.doorFee}
-                  </span>
-                )}
-              </div>
-            </>
-          ) : (
-            <>
-              <ComicCaption>No Dates Listed</ComicCaption>
-
-              <p className="twg-copy-caps mt-6 text-sm text-stone-300">
-                No upcoming shows are currently listed. Booking information and
-                future show announcements will appear here.
-              </p>
-            </>
-          )}
-        </ComicPanel>
+            <p className="twg-copy-caps mt-6 text-sm text-stone-300">
+              No upcoming shows are currently listed. Future show announcements
+              will appear here.
+            </p>
+          </ComicPanel>
+        )}
       </div>
     </SectionShell>
   );

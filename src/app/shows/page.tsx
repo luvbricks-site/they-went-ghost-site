@@ -1,3 +1,4 @@
+import AssetFrame from "@/components/AssetFrame";
 import ComicCaption from "@/components/ComicCaption";
 import ComicPanel from "@/components/ComicPanel";
 import SubPageLayout from "@/components/SubPageLayout";
@@ -11,61 +12,74 @@ export default function ShowsPage() {
       description={showsSectionContent.summary}
     >
       {upcomingShows.length > 0 ? (
-        <div className="grid gap-6">
+        <div className="grid gap-8">
           {upcomingShows.map((show) => (
-            <ComicPanel key={show.slug} className="p-6" cut="right">
-              <ComicCaption>
-                {show.date} • {show.time}
-              </ComicCaption>
+            <article
+              key={show.slug}
+              className="grid gap-6 lg:grid-cols-[360px_1fr] lg:items-start"
+            >
+              <AssetFrame
+                src={show.flyerImage}
+                alt={`${show.title} flyer`}
+                label="Show Flyer"
+                sublabel="Coming Soon"
+                aspect="poster"
+              />
 
-              <h2 className="font-display mt-6 text-5xl uppercase leading-none tracking-tighter">
-                {show.title}
-              </h2>
+              <ComicPanel className="p-6" cut="right">
+                <ComicCaption>
+                  {show.date} • {show.time}
+                </ComicCaption>
 
-              <p className="mt-4 text-stone-300">
-                {show.venue} — {show.city}, {show.state}
-              </p>
+                <h2 className="font-display mt-6 text-5xl uppercase leading-none tracking-tighter">
+                  {show.title}
+                </h2>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {show.ageRestriction && (
-                  <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
-                    {show.ageRestriction}
-                  </span>
-                )}
+                <p className="mt-4 text-stone-300">
+                  {show.venue} — {show.city}, {show.state}
+                </p>
 
-                {show.doorFee && (
-                  <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
-                    {show.doorFee}
-                  </span>
-                )}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {show.ageRestriction && (
+                    <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
+                      {show.ageRestriction}
+                    </span>
+                  )}
 
-                {show.lineup && (
-                  <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
-                    {show.lineup}
-                  </span>
-                )}
-              </div>
+                  {show.doorFee && (
+                    <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
+                      {show.doorFee}
+                    </span>
+                  )}
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                {show.ticketUrl && (
-                  <a
-                    href={show.ticketUrl}
-                    className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-100 bg-stone-100 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
-                  >
-                    Tickets
-                  </a>
-                )}
+                  {show.lineup && (
+                    <span className="border border-stone-200/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-stone-400">
+                      {show.lineup}
+                    </span>
+                  )}
+                </div>
 
-                {show.mapUrl && (
-                  <a
-                    href={show.mapUrl}
-                    className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
-                  >
-                    Map
-                  </a>
-                )}
-              </div>
-            </ComicPanel>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {show.ticketUrl && (
+                    <a
+                      href={show.ticketUrl}
+                      className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-100 bg-stone-100 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
+                    >
+                      Tickets
+                    </a>
+                  )}
+
+                  {show.mapUrl && (
+                    <a
+                      href={show.mapUrl}
+                      className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-200/15 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
+                    >
+                      Map
+                    </a>
+                  )}
+                </div>
+              </ComicPanel>
+            </article>
           ))}
         </div>
       ) : (
