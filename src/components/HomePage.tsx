@@ -1,7 +1,6 @@
 import HomeComicBreak from "@/components/HomeComicBreak";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
 import HeroSection from "@/components/sections/HeroSection";
 import MerchSection from "@/components/sections/MerchSection";
@@ -43,7 +42,6 @@ export default function HomePage() {
 
       <ShowsSection />
       <MerchSection />
-      <AboutSection />
 
       <HomeComicBreak
         eyebrow="The Final Chapter"

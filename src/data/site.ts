@@ -29,7 +29,6 @@ export const navItems: SiteLink[] = [
   { label: "Videos", href: "/videos" },
   { label: "Shows", href: "/shows" },
   { label: "Merch", href: "/merch" },
-  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
