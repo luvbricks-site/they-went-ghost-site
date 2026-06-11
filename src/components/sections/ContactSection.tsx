@@ -6,7 +6,11 @@ import Link from "next/link";
 
 export default function ContactSection() {
   return (
-    <SectionShell id="contact" eyebrow="Contact" title="Booking & Links">
+    <SectionShell id="contact" eyebrow="Contact" title={siteConfig.contactTitle}>
+      <p className="twg-copy-caps mb-8 max-w-4xl text-sm text-stone-300 sm:text-base sm:leading-7">
+        {siteConfig.contactStory}
+      </p>
+      
       <div className="grid gap-6 lg:grid-cols-[1fr_420px]">
         <ComicPanel className="p-6" cut="right">
           <ComicCaption>Booking</ComicCaption>

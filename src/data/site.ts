@@ -16,8 +16,13 @@ export const siteConfig = {
 
   bookingEmail: "theywentghost@gmail.com",
 
+  contactTitle: "When the Signal Calls",
+
+  contactStory:
+    "The city is ours — for now. But the dark always finds another alley, another room, another night to crawl back through. If you need us again, you know where to look. Send the signal, open the channel, and our heroes will answer.",
+
   bookingDescription:
-    "For original music opportunities, booking, media, and select cover-gig inquiries, contact They Went Ghost directly.",
+    "For music opportunities, booking, media, and cover-gig inquiries, contact They Went Ghost directly.",
 
   coverGigNote:
     "They Went Ghost is original-music-first. Cover gigs are available as a secondary booking option for the right event.",

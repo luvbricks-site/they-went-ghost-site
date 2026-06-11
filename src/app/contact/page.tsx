@@ -7,8 +7,8 @@ export default function ContactPage() {
   return (
     <SubPageLayout
       eyebrow="Contact"
-      title="Booking & Links"
-      description={siteConfig.bookingDescription}
+      title={siteConfig.contactTitle}
+      description={siteConfig.contactStory}
     >
       <div className="grid gap-6 lg:grid-cols-[1fr_420px]">
         <ComicPanel className="p-6 sm:p-8" cut="right">
