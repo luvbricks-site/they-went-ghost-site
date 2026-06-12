@@ -5,6 +5,7 @@ import SectionShell from "@/components/sections/SectionShell";
 import { featuredRelease } from "@/data/releases";
 import { isActiveHref } from "@/lib/links";
 import Link from "next/link";
+import PlatformLink from "@/components/PlatformLink";
 
 export default function MusicSection() {
   const activeStreamingLinks = featuredRelease.streamingLinks.filter((link) =>
@@ -54,13 +55,7 @@ export default function MusicSection() {
 
           <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
             {activeStreamingLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-200/15 px-4 py-2 text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
-              >
-                {link.label}
-              </a>
+              <PlatformLink key={link.label} href={link.href} label={link.label} />
             ))}
 
             {hasPurchaseLink && featuredRelease.purchaseLink && (

@@ -2,6 +2,7 @@ import BrandMark from "@/components/BrandMark";
 import Link from "next/link";
 import ReplayIntroButton from "@/components/ReplayIntroButton";
 import { activeSocialLinks, navItems } from "@/data/site";
+import PlatformLink from "@/components/PlatformLink";
 
 export default function SiteFooter() {
   return (
@@ -11,8 +12,7 @@ export default function SiteFooter() {
           <BrandMark size="lg" />
 
           <p className="mt-5 max-w-md text-sm leading-6 text-stone-500">
-            Original music from the darker edge of modern rock. Serious,
-            cinematic, and built around the world of They Went Ghost.
+            
           </p>
 
           <div className="mt-6">
@@ -46,13 +46,13 @@ export default function SiteFooter() {
           {activeSocialLinks.length > 0 ? (
             <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
               {activeSocialLinks.map((link) => (
-                <a
+                <PlatformLink
                   key={link.label}
                   href={link.href}
-                  className="twg-touch-target inline-flex items-center justify-center border border-stone-200/10 px-3 py-2 text-center text-xs font-bold uppercase tracking-[0.18em] text-stone-500 transition hover:border-stone-100 hover:text-stone-100"
-                >
-                  {link.label}
-                </a>
+                  label={link.label}
+                  iconOnly
+                  className="text-stone-500"
+                />
               ))}
             </div>
           ) : (

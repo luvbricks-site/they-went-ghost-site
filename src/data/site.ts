@@ -25,7 +25,7 @@ export const siteConfig = {
     "For music opportunities, booking, media, and cover-gig inquiries, contact They Went Ghost directly.",
 
   coverGigNote:
-    "They Went Ghost is original-music-first. Cover gigs are available as a secondary booking option for the right event.",
+    "For music opportunities, booking, media, and cover-gig inquiries, contact They Went Ghost directly.",
 };
 
 export const navItems: SiteLink[] = [

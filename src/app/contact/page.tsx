@@ -2,6 +2,7 @@ import ComicCaption from "@/components/ComicCaption";
 import ComicPanel from "@/components/ComicPanel";
 import SubPageLayout from "@/components/SubPageLayout";
 import { activeSocialLinks, siteConfig } from "@/data/site";
+import PlatformLink from "@/components/PlatformLink";
 
 export default function ContactPage() {
   return (
@@ -21,12 +22,13 @@ export default function ContactPage() {
           <p className="mt-4 text-stone-300">{siteConfig.coverGigNote}</p>
 
           {siteConfig.bookingEmail ? (
-            <a
+            <PlatformLink
               href={`mailto:${siteConfig.bookingEmail}`}
-              className="twg-glitch-hover twg-touch-target mt-8 inline-flex items-center justify-center border border-stone-100 bg-stone-100 px-5 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-transparent hover:text-stone-100"
-            >
-              {siteConfig.bookingEmail}
-            </a>
+              label="Email"
+              displayLabel={siteConfig.bookingEmail}
+              variant="solid"
+              className="mt-8 px-5 py-3"
+            />
           ) : (
             <p className="mt-6 text-sm text-stone-500">
               Booking email will be added later.
@@ -40,13 +42,12 @@ export default function ContactPage() {
           {activeSocialLinks.length > 0 ? (
             <div className="mt-6 grid gap-3">
               {activeSocialLinks.map((link) => (
-                <a
+                <PlatformLink
                   key={link.label}
                   href={link.href}
-                  className="twg-glitch-hover twg-touch-target inline-flex items-center justify-center border border-stone-200/15 px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-300 transition hover:border-stone-100 hover:text-stone-100"
-                >
-                  {link.label}
-                </a>
+                  label={link.label}
+                  className="py-3"
+                />
               ))}
             </div>
           ) : (
