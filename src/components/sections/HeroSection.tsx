@@ -24,7 +24,7 @@ export default function HeroSection() {
         {/* LEFT SIDE: album cover feature */}
         <div className="max-w-xl">
           <div className="space-y-3">
-            <ComicCaption>Official Site • Album Promo</ComicCaption>
+            <ComicCaption>Official Site</ComicCaption>
 
           <div>
             <ComicCaption>ISSUE 01</ComicCaption>
@@ -42,9 +42,7 @@ export default function HeroSection() {
           </div>
 
           <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
-            <TwgButton href="/listen" variant="primary">
-              Listen Now
-            </TwgButton>
+            <TwgButton href="/music" variant="primary">Listen Now</TwgButton>
 
             <TwgButton href="/videos">Watch Video</TwgButton>
 

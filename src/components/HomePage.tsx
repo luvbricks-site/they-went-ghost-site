@@ -7,6 +7,7 @@ import MerchSection from "@/components/sections/MerchSection";
 import MusicSection from "@/components/sections/MusicSection";
 import ShowsSection from "@/components/sections/ShowsSection";
 import VideoSection from "@/components/sections/VideoSection";
+import HomeStoryPanel from "@/components/HomeStoryPanel";
 
 export default function HomePage() {
   return (
@@ -15,20 +16,16 @@ export default function HomePage() {
 
       <HeroSection />
 
-      <HomeComicBreak
-        eyebrow="Chapter 1"
-        title="!BOOM! A LOW RUMBLE FROM THE SEWER"
-        description=""
-        issueLabel="01"
+      <HomeStoryPanel
+        src="/story-panels/old-theatre.png"
+        alt="Graphic novel panel showing a sewer grate rumbling beneath the city with the caption A Low Rumble From the Sewer"
       />
 
       <MusicSection />
 
-      <HomeComicBreak
-        eyebrow="Chapter 2"
-        title="!BUZZZ!...OUR HEROES HAVE RISEN...!HISS!"
-        description=""
-        issueLabel="02"
+      <HomeStoryPanel
+        src="/story-panels/heroes-rising-in-the-dark-theater.png"
+        alt="Graphic novel panel showing the band emerging in a dark theater with the caption Our Heroes Have Risen"
       />
 
       <VideoSection />

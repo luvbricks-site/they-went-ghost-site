@@ -30,7 +30,6 @@ export const siteConfig = {
 
 export const navItems: SiteLink[] = [
   { label: "Music", href: "/music" },
-  { label: "Listen", href: "/listen" },
   { label: "Videos", href: "/videos" },
   { label: "Shows", href: "/shows" },
   { label: "Merch", href: "/merch" },
