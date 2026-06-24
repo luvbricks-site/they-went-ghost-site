@@ -19,7 +19,7 @@ export const siteConfig = {
   contactTitle: "When the Signal Calls",
 
   contactStory:
-    "The city is ours — for now. But the dark always finds another alley, another room, another night to crawl back through. If you need us again, you know where to look. Send the signal, open the channel, and our heroes will answer.",
+    "The city is ours...for now. But the dark always finds another alley, another room, another night to crawl back through. If you need us again, you know where to look. Send the signal, open the channel, and our heroes will answer.",
 
   bookingDescription:
     "For music opportunities, booking, media, and cover-gig inquiries, contact They Went Ghost directly.",

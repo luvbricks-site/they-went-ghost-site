@@ -17,7 +17,7 @@ export type Show = {
 export const showsSectionContent = {
   title: "Where We Make Our Stand",
   summary:
-    "When the lights drop and the city sinks deeper into shadow, the stage becomes the battleground. This is where our heroes push back — with volume, grit, and songs loud enough to stand against the dark.",
+    "When the lights drop and the city sinks deeper into shadow, the stage becomes the battleground. This is where our heroes push back with volume, grit, and songs loud enough to stand against the dark.",
 };
 
 export const upcomingShows: Show[] = [

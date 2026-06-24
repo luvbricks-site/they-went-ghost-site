@@ -2,7 +2,7 @@ export const aboutContent = {
   bandPhoto: "/photos/group_toon.png",
 
   homepageSummary:
-    "The current line up drags progressive rock, reggae, and hip hop through the smoke and comes out with something unmistakably their own. Onstage, They Went Ghost grabs the room fast — all raw energy, sharp instincts, and songs built to leave a mark.",
+    "The current line up drags progressive rock, reggae, and hip hop through the smoke and comes out with something unmistakably their own. Onstage, They Went Ghost grabs the room fast. All raw energy, sharp instincts, and songs built to leave a mark.",
 
   pageIntro:
     "A dark cinematic rock project focused first on original music.",

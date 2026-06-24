@@ -1,4 +1,4 @@
-import HomeComicBreak from "@/components/HomeComicBreak";
+
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import ContactSection from "@/components/sections/ContactSection";
@@ -30,21 +30,17 @@ export default function HomePage() {
 
       <VideoSection />
 
-      <HomeComicBreak
-        eyebrow="Chapter 3"
-        title="!BANG!...RETAKING THE CITY...!BOOM!"
-        description=""
-        issueLabel="03"
+      <HomeStoryPanel
+        src="/story-panels/rooftop-rock.png"
+        alt="Graphic novel panel showing They Went Ghost performing on the roof of the old theater and retaking the city through music"
       />
 
       <ShowsSection />
       <MerchSection />
 
-      <HomeComicBreak
-        eyebrow="The Final Chapter"
-        title="VICTORY! THE CITY IS OURS! FOR NOW..."
-        description=""
-        issueLabel="04"
+      <HomeStoryPanel
+        src="/story-panels/victory.png"
+        alt="Graphic novel panel showing They Went Ghost victorious on the roof of the old theater with the caption Victory"
       />
 
       <ContactSection />

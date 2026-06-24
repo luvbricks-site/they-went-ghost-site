@@ -24,4 +24,4 @@ export const merchCategories: MerchCategory[] = [
 ];
 
 export const merchStory =
-  "Out past the lights, the city still watches. The armor becomes the uniform. Every shirt, every mark, every piece of gear carries the signal beyond the venue walls. Our heroes do not take the city alone — they move with everyone bold enough to wear the warning.";
+  "Out past the lights, the city still watches. The armor becomes the uniform. Every shirt, every mark, every piece of gear carries the signal beyond the venue walls. Our heroes do not take the city alone - they move with everyone bold enough to wear the warning.";

@@ -63,7 +63,7 @@ export default function SiteFooter() {
 
       <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-2 border-t border-stone-200/10 pt-6 text-xs uppercase tracking-[0.2em] text-stone-700 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} They Went Ghost</p>
-        <p>Original Music First</p>
+        <p>Website designed and built by Michael Cagley</p>
       </div>
     </footer>
   );

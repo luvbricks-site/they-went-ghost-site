@@ -14,7 +14,7 @@ export const videos: MusicVideo[] = [
     youtubeId: "fe4vdc6eesY",
     youtubeUrl: "https://youtu.be/fe4vdc6eesY?si=FIb-mSUHp3txjy9J",
     description:
-      "Every signal leaves a trace. These videos catch our Heroes in motion — four figures moving through the static, dragging their sound out of the dark and into frame. What starts as a transmission becomes proof: our heroes are out there, and the noise is getting closer.",
+      "Every signal leaves a trace. These videos catch our Heroes in motion. Four figures moving through the static, dragging their sound out of the dark and into frame. What starts as a transmission becomes proof: our heroes are out there, and the noise is getting closer.",
     isFeatured: true,
   },
   {
