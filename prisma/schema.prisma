@@ -1,0 +1,574 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/**
+ * They Went Ghost backend foundation
+ * Notes:
+ * - Money is stored in cents as Int fields.
+ * - Status/type fields are Strings for SQLite compatibility.
+ * - Later, production can move to PostgreSQL.
+ * - Guest checkout only: no customer account table.
+ * - Cash-basis accounting: journal entries are created when money is received/refunded.
+ */
+
+model DigitalRelease {
+  id             String    @id @default(uuid())
+  title          String
+  slug           String    @unique
+  releaseType    String    @default("EP") // SINGLE, EP, ALBUM
+  releaseDate    DateTime?
+  description    String?
+  coverImagePath String?
+  isActive       Boolean   @default(true)
+
+  tracks   DigitalTrack[]
+  products DigitalProduct[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DigitalTrack {
+  id        String          @id @default(uuid())
+  releaseId String?
+  release   DigitalRelease? @relation(fields: [releaseId], references: [id], onDelete: SetNull)
+
+  trackNumber     Int?
+  title           String
+  slug            String  @unique
+  durationSeconds Int?
+  isActive        Boolean @default(true)
+
+  products DigitalProduct[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([releaseId])
+}
+
+model DigitalProduct {
+  id          String  @id @default(uuid())
+  productType String // SINGLE_TRACK, FULL_RELEASE
+  title       String
+  slug        String  @unique
+  description String?
+
+  releaseId String?
+  release   DigitalRelease? @relation(fields: [releaseId], references: [id], onDelete: SetNull)
+
+  trackId String?
+  track   DigitalTrack? @relation(fields: [trackId], references: [id], onDelete: SetNull)
+
+  priceCents Int
+  currency   String @default("USD")
+
+  allowMp3  Boolean @default(true)
+  allowFlac Boolean @default(true)
+
+  isActive Boolean @default(true)
+
+  files      DigitalFile[]
+  orderItems OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([releaseId])
+  @@index([trackId])
+}
+
+model DigitalFile {
+  id        String         @id @default(uuid())
+  productId String
+  product   DigitalProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  format           String // MP3, FLAC
+  storagePath      String
+  originalFileName String?
+  mimeType         String?
+  byteSize         Int?
+  checksum         String?
+  isActive         Boolean @default(true)
+
+  downloadGrants DownloadGrant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([productId, format])
+  @@index([format])
+}
+
+model MerchProduct {
+  id String @id @default(uuid())
+
+  provider          String? // PRINTFUL, PRINTIFY, GELATO, etc.
+  providerProductId String?
+
+  title           String
+  slug            String  @unique
+  description     String?
+  category        String? // SHIRT, HOODIE, HAT, TANK, STICKER
+  mockupImagePath String?
+
+  isActive Boolean @default(true)
+
+  variants MerchVariant[]
+  images   MerchImage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([provider])
+  @@index([providerProductId])
+}
+
+model MerchVariant {
+  id        String       @id @default(uuid())
+  productId String
+  product   MerchProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  providerVariantId String?
+  sku               String?
+  size              String?
+  color             String?
+
+  priceCents Int
+  costCents  Int    @default(0)
+  currency   String @default("USD")
+
+  isActive Boolean @default(true)
+
+  orderItems OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([productId])
+  @@index([sku])
+  @@index([providerVariantId])
+}
+
+model MerchImage {
+  id        String       @id @default(uuid())
+  productId String
+  product   MerchProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  imagePath String
+  altText   String?
+  sortOrder Int     @default(0)
+
+  createdAt DateTime @default(now())
+
+  @@index([productId])
+}
+
+model PromoCode {
+  id          String  @id @default(uuid())
+  code        String  @unique
+  description String?
+
+  discountType  String // PERCENT, FIXED_AMOUNT
+  discountValue Int // percent value or cents value
+
+  appliesTo String @default("ALL") // ALL, DIGITAL, MERCH
+  maxUses   Int?
+  useCount  Int    @default(0)
+
+  isActive Boolean   @default(true)
+  startsAt DateTime?
+  endsAt   DateTime?
+
+  discounts OrderDiscount[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id          String @id @default(uuid())
+  orderNumber String @unique
+
+  orderType     String @default("MIXED") // DIGITAL, MERCH, MIXED
+  status        String @default("PENDING") // PENDING, PAID, REFUNDED, CANCELLED
+  paymentStatus String @default("UNPAID") // UNPAID, PAID, PARTIALLY_REFUNDED, REFUNDED, FAILED
+
+  customerEmail      String?
+  customerName       String?
+  customerCountry    String?
+  customerRegion     String?
+  customerPostalCode String?
+
+  currency String @default("USD")
+
+  subtotalCents Int @default(0)
+  discountCents Int @default(0)
+  shippingCents Int @default(0)
+  taxCents      Int @default(0)
+  totalCents    Int @default(0)
+
+  totalCostCents    Int @default(0)
+  processorFeeCents Int @default(0)
+  netCents          Int @default(0)
+
+  checkoutProvider        String? // STRIPE, PAYPAL
+  stripeCheckoutSessionId String? @unique
+  stripePaymentIntentId   String? @unique
+  paypalOrderId           String? @unique
+  paypalCaptureId         String? @unique
+
+  paidAt      DateTime?
+  refundedAt  DateTime?
+  cancelledAt DateTime?
+
+  notes String?
+
+  items             OrderItem[]
+  payments          Payment[]
+  discounts         OrderDiscount[]
+  taxLines          TaxLine[]
+  downloadGrants    DownloadGrant[]
+  fulfillmentOrders MerchFulfillmentOrder[]
+  journalEntries    JournalEntry[]
+  receiptDocuments  ReceiptDocument[]
+  analyticsEvents   AnalyticsEvent[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([paymentStatus])
+  @@index([customerEmail])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id      String @id @default(uuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  itemType String // DIGITAL, MERCH
+
+  digitalProductId String?
+  digitalProduct   DigitalProduct? @relation(fields: [digitalProductId], references: [id], onDelete: SetNull)
+
+  merchVariantId String?
+  merchVariant   MerchVariant? @relation(fields: [merchVariantId], references: [id], onDelete: SetNull)
+
+  titleSnapshot  String
+  skuSnapshot    String?
+  formatSnapshot String? // MP3, FLAC for digital purchases
+  sizeSnapshot   String?
+  colorSnapshot  String?
+
+  quantity       Int @default(1)
+  unitPriceCents Int
+  unitCostCents  Int @default(0)
+  discountCents  Int @default(0)
+  taxCents       Int @default(0)
+  lineTotalCents Int
+
+  fulfillmentStatus String @default("NOT_REQUIRED") // NOT_REQUIRED, PENDING, SUBMITTED, SHIPPED, DELIVERED, CANCELLED
+
+  downloadGrants DownloadGrant[]
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([digitalProductId])
+  @@index([merchVariantId])
+}
+
+model Payment {
+  id      String @id @default(uuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  provider          String // STRIPE, PAYPAL
+  providerPaymentId String?
+  providerOrderId   String?
+
+  status   String // PENDING, PAID, FAILED, REFUNDED, PARTIALLY_REFUNDED
+  currency String @default("USD")
+
+  grossCents Int @default(0)
+  feeCents   Int @default(0)
+  netCents   Int @default(0)
+  taxCents   Int @default(0)
+
+  capturedAt DateTime?
+  refundedAt DateTime?
+
+  rawEventId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orderId])
+  @@index([provider])
+  @@index([providerPaymentId])
+  @@index([providerOrderId])
+}
+
+model PaymentEvent {
+  id        String  @id @default(uuid())
+  provider  String // STRIPE, PAYPAL
+  eventId   String  @unique
+  eventType String
+  processed Boolean @default(false)
+  rawBody   String?
+
+  createdAt   DateTime  @default(now())
+  processedAt DateTime?
+
+  @@index([provider])
+  @@index([eventType])
+  @@index([createdAt])
+}
+
+model OrderDiscount {
+  id String @id @default(uuid())
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  promoCodeId String?
+  promoCode   PromoCode? @relation(fields: [promoCodeId], references: [id], onDelete: SetNull)
+
+  codeSnapshot  String?
+  discountType  String
+  discountValue Int
+  amountCents   Int
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([promoCodeId])
+}
+
+model TaxLine {
+  id String @id @default(uuid())
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  taxProvider String? // STRIPE_TAX, MANUAL, MERCH_PROVIDER
+  country     String?
+  region      String?
+  rate        String?
+  label       String?
+  amountCents Int     @default(0)
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([country])
+  @@index([region])
+}
+
+model DownloadGrant {
+  id String @id @default(uuid())
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  orderItemId String?
+  orderItem   OrderItem? @relation(fields: [orderItemId], references: [id], onDelete: SetNull)
+
+  digitalFileId String?
+  digitalFile   DigitalFile? @relation(fields: [digitalFileId], references: [id], onDelete: SetNull)
+
+  tokenHash String @unique
+
+  format        String // MP3, FLAC
+  downloadsUsed Int    @default(0)
+  maxDownloads  Int    @default(1)
+
+  isRevoked Boolean @default(false)
+
+  createdAt        DateTime  @default(now())
+  lastDownloadedAt DateTime?
+
+  downloadLogs DownloadLog[]
+
+  @@index([orderId])
+  @@index([orderItemId])
+  @@index([digitalFileId])
+}
+
+model DownloadLog {
+  id      String        @id @default(uuid())
+  grantId String
+  grant   DownloadGrant @relation(fields: [grantId], references: [id], onDelete: Cascade)
+
+  userAgent String?
+  ipHash    String?
+
+  downloadedAt DateTime @default(now())
+
+  @@index([grantId])
+  @@index([downloadedAt])
+}
+
+model MerchFulfillmentOrder {
+  id String @id @default(uuid())
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  provider        String // PRINTFUL, PRINTIFY, GELATO, etc.
+  providerOrderId String?
+  providerStatus  String  @default("NOT_SUBMITTED")
+
+  productionCostCents Int    @default(0)
+  shippingCostCents   Int    @default(0)
+  currency            String @default("USD")
+
+  submittedAt DateTime?
+  shippedAt   DateTime?
+  deliveredAt DateTime?
+
+  trackingNumber String?
+  trackingUrl    String?
+
+  rawPayload String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orderId])
+  @@index([provider])
+  @@index([providerOrderId])
+  @@index([providerStatus])
+}
+
+model AccountingAccount {
+  id            String  @id @default(uuid())
+  code          String  @unique
+  name          String
+  accountType   String // ASSET, LIABILITY, EQUITY, REVENUE, EXPENSE
+  normalBalance String // DEBIT, CREDIT
+  isActive      Boolean @default(true)
+
+  lines JournalLine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([accountType])
+}
+
+model JournalEntry {
+  id          String @id @default(uuid())
+  entryNumber String @unique
+
+  orderId String?
+  order   Order?  @relation(fields: [orderId], references: [id], onDelete: SetNull)
+
+  entryDate   DateTime @default(now())
+  description String
+
+  sourceType String // ORDER_PAYMENT, REFUND, MERCH_COST, MANUAL_ADJUSTMENT
+  sourceId   String?
+  status     String  @default("POSTED") // POSTED, VOID
+
+  lines JournalLine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orderId])
+  @@index([entryDate])
+  @@index([sourceType])
+}
+
+model JournalLine {
+  id String @id @default(uuid())
+
+  journalEntryId String
+  journalEntry   JournalEntry @relation(fields: [journalEntryId], references: [id], onDelete: Cascade)
+
+  accountId String
+  account   AccountingAccount @relation(fields: [accountId], references: [id], onDelete: Restrict)
+
+  debitCents  Int @default(0)
+  creditCents Int @default(0)
+
+  memo String?
+
+  createdAt DateTime @default(now())
+
+  @@index([journalEntryId])
+  @@index([accountId])
+}
+
+model AnalyticsEvent {
+  id String @id @default(uuid())
+
+  eventName     String // page_view, music_click, video_click, add_to_cart, checkout_started, purchase_completed
+  sessionId     String?
+  visitorIdHash String?
+
+  pagePath String?
+  referrer String?
+
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+
+  relatedProductSlug String?
+  relatedProvider    String?
+
+  orderId String?
+  order   Order?  @relation(fields: [orderId], references: [id], onDelete: SetNull)
+
+  metadata  String? // JSON text for SQLite compatibility
+  userAgent String?
+  ipHash    String?
+
+  createdAt DateTime @default(now())
+
+  @@index([eventName])
+  @@index([sessionId])
+  @@index([visitorIdHash])
+  @@index([pagePath])
+  @@index([createdAt])
+  @@index([orderId])
+}
+
+model EmailSignup {
+  id         String  @id @default(uuid())
+  email      String  @unique
+  source     String?
+  subscribed Boolean @default(true)
+
+  createdAt      DateTime  @default(now())
+  unsubscribedAt DateTime?
+
+  @@index([subscribed])
+  @@index([createdAt])
+}
+
+model ReceiptDocument {
+  id String @id @default(uuid())
+
+  orderId String?
+  order   Order?  @relation(fields: [orderId], references: [id], onDelete: SetNull)
+
+  title       String
+  filePath    String
+  mimeType    String?
+  amountCents Int?
+  notes       String?
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+}
